@@ -1,0 +1,881 @@
+fileFormatVersion: 2
+guid: 02dd6406ed1ebc248b2fafd0485e0de9
+timeCreated: 1521227275
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm_1_Left
+    100002: Arm_1_Right
+    100004: Arm_2_Left
+    100006: Arm_2_Left_end
+    100008: Arm_2_Right
+    100010: Arm_2_Right_end
+    100012: Armature
+    100014: //RootNode
+    100016: Body_Upper
+    100018: Foot_1_Left
+    100020: Foot_1_Right
+    100022: Foot_2_Left
+    100024: Foot_2_Left_end
+    100026: Foot_2_Right
+    100028: Foot_2_Right_end
+    100030: Head
+    100032: Head_end
+    100034: IK_Arm_Left
+    100036: IK_Arm_Left_end
+    100038: IK_Arm_Right
+    100040: IK_Arm_Right_end
+    100042: IK_Foot_Left
+    100044: IK_Foot_Left_end
+    100046: IK_Foot_Right
+    100048: IK_Foot_Right_end
+    100050: Player
+    100052: Root
+    400000: Arm_1_Left
+    400002: Arm_1_Right
+    400004: Arm_2_Left
+    400006: Arm_2_Left_end
+    400008: Arm_2_Right
+    400010: Arm_2_Right_end
+    400012: Armature
+    400014: //RootNode
+    400016: Body_Upper
+    400018: Foot_1_Left
+    400020: Foot_1_Right
+    400022: Foot_2_Left
+    400024: Foot_2_Left_end
+    400026: Foot_2_Right
+    400028: Foot_2_Right_end
+    400030: Head
+    400032: Head_end
+    400034: IK_Arm_Left
+    400036: IK_Arm_Left_end
+    400038: IK_Arm_Right
+    400040: IK_Arm_Right_end
+    400042: IK_Foot_Left
+    400044: IK_Foot_Left_end
+    400046: IK_Foot_Right
+    400048: IK_Foot_Right_end
+    400050: Player
+    400052: Root
+    4300000: Player
+    7400000: Animation
+    7400002: Idle
+    7400004: Walk
+    7400006: Run
+    7400008: Jump_start
+    7400010: Flip
+    7400012: Jump_loop
+    7400014: Float
+    7400016: Jump_end
+    9500000: //RootNode
+    13700000: Player
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Animation
+      takeName: Armature|CharacterAnimation
+      firstFrame: 0
+      lastFrame: 660
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_2_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_2_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Player
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Armature|CharacterAnimation
+      firstFrame: 30
+      lastFrame: 110
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_2_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_2_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Player
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Armature|CharacterAnimation
+      firstFrame: 140
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_2_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_2_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Player
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Run
+      takeName: Armature|CharacterAnimation
+      firstFrame: 210
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_2_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_2_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Player
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump_start
+      takeName: Armature|CharacterAnimation
+      firstFrame: 280
+      lastFrame: 296
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_2_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_2_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Player
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Flip
+      takeName: Armature|CharacterAnimation
+      firstFrame: 309
+      lastFrame: 329
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_2_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_2_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Player
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump_loop
+      takeName: Armature|CharacterAnimation
+      firstFrame: 360
+      lastFrame: 400
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_2_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_2_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Player
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Float
+      takeName: Armature|CharacterAnimation
+      firstFrame: 440
+      lastFrame: 580
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_2_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_2_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Player
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump_end
+      takeName: Armature|CharacterAnimation
+      firstFrame: 640
+      lastFrame: 660
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Body_Upper
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Left/Arm_2_Left/Arm_2_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/Arm_1_Right/Arm_2_Right/Arm_2_Right_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head
+        weight: 1
+      - path: Armature/Root/Body_Upper/Head/Head_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Left/IK_Arm_Left_end
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right
+        weight: 1
+      - path: Armature/Root/Body_Upper/IK_Arm_Right/IK_Arm_Right_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left
+        weight: 1
+      - path: Armature/Root/Foot_1_Left/Foot_2_Left/Foot_2_Left_end
+        weight: 1
+      - path: Armature/Root/Foot_1_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right
+        weight: 1
+      - path: Armature/Root/Foot_1_Right/Foot_2_Right/Foot_2_Right_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left
+        weight: 1
+      - path: Armature/Root/IK_Foot_Left/IK_Foot_Left_end
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right
+        weight: 1
+      - path: Armature/Root/IK_Foot_Right/IK_Foot_Right_end
+        weight: 1
+      - path: Player
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.001
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
