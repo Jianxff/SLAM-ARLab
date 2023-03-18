@@ -6,8 +6,8 @@
 ![stars](https://badgen.net/badge/Environment/Windows/green)
 
 <center>
-    <img src="Assets/view.png" width="450" alt="view"/>
-    <img src="Assets/debug.png" width="450" alt="debug"/>
+    <img src="Assets/view.png" width="360" alt="view"/>
+    <img src="Assets/debug.png" width="360" alt="debug"/>
 </center>
 <br>
 
