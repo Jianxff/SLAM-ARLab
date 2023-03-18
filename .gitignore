@@ -14,6 +14,7 @@ Unity_render/*.sln
 Unity_render/.vscode
 Unity_render/Temp
 Unity_render/Config/dataset.avi
+Unity_render/Assets/Models
 
 Release
 
