@@ -5,10 +5,7 @@
 ![unity](https://badgen.net/badge/Render/Unity/orange)
 ![stars](https://badgen.net/badge/Environment/Windows/green)
 
-<center>
-    <img src="Assets/view.png" width="360" alt="view"/>
-    <img src="Assets/debug.png" width="360" alt="debug"/>
-</center>
+![intro](Assets/intro.png)
 <br>
 
 ## Environment
