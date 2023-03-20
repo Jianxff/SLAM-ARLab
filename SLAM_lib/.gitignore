@@ -1,4 +1,5 @@
 cmake-build-release-visual-studio
+cmake-build-release-androidndk
 test
 .idea
 .vscode

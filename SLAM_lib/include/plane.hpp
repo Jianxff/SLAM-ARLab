@@ -10,6 +10,7 @@ class Plane{
     bool mAvailable = false;
     float mA = 0,mB = 0,mC = 0,mD = 0;
     const float mSameLineThreshold = 1e-3;
+    cv::Point3f mAvgCenter;
 
 public:
     Plane();
@@ -29,6 +30,7 @@ public:
     float count(cv::Point3f);
 
     // getter
+    cv::Point3f avgCenter(){return mAvgCenter;}
     float A(){return mA;}
     float B(){return mB;}
     float C(){return mC;}

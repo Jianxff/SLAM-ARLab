@@ -1,42 +1,63 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.IO;
+using Random = System.Random;
 using System;
 
 public class Visual : MonoBehaviour{
-    
+    int width = 800;
+    int height = 600;
+
     // camera variables
-    byte[] image = new byte[640*480*3];
+    byte[] imageData;
+    byte[] cameraData;
+    Color32[] colorData;
     float[] R = new float[9];
     float[] T = new float[3];
     float[] normal = new float[3];
     float[] center = new float[3];
     
+    // Camera
+    public WebCamTexture webcamTexture;
+    public RawImage rawImage;
+    // public RawImage display;
     // render variables
     Texture2D tex;
     Material mat;
     public Shader shader;
     public GameObject test_model;
     public GameObject test_plane;
+    public GameObject animate_model;
     int detected = 20;
     bool put = false;
     bool redetect = false;
     bool cxx_debug = false;
+    private Random rd = new Random();
+    private int randCount = 0;
 
     
     // dll import
-    [DllImport("locator")]
-    private static extern bool init();
-    [DllImport("locator")]
+    [DllImport("liblocator.so")]
+    private static extern bool init(int width, int height);
+    [DllImport("liblocator.so")]
     private static extern void set_debug(bool debug);
-    [DllImport("locator")]
+    [DllImport("liblocator.so")]
     private static extern int process(byte[] img, float[] R, float[] T, bool show_indicator);
-    [DllImport("locator")]
+    [DllImport("liblocator.so")]
     private static extern bool detect(float[] normal, float[] center);
-    [DllImport("locator")]
+    [DllImport("liblocator.so")]
     private static extern void release();
+
+ 
+    [DllImport("libcvTools.so")]
+    private static extern void rotate(byte[] img,int w,int h, int angle,byte[] dst);
+    [DllImport("libcvTools.so")]
+    private static extern void flip(byte[] img,int w,int h, int fcode, byte[] dst);
+    [DllImport("libcvTools.so")]
+    private static extern void transpose(byte[] img,int w,int h, byte[] dst);
 
     [ImageEffectOpaque]
     void OnRenderImage(RenderTexture src, RenderTexture dest)
@@ -50,12 +71,9 @@ public class Visual : MonoBehaviour{
     }
 
 
-    public Material material
-    {
-        get
-        {
-            if (mat == null)
-            {
+    public Material material{
+        get{
+            if (mat == null){
                 mat = new Material(shader);
                 mat.hideFlags = HideFlags.HideAndDontSave;
             }
@@ -63,14 +81,32 @@ public class Visual : MonoBehaviour{
         }
     }
 
+    void Color32ToByte(Color32[] color,byte[] image){
+        GCHandle handle = default(GCHandle);
+        handle = GCHandle.Alloc(color, GCHandleType.Pinned);
+        IntPtr ptr = handle.AddrOfPinnedObject();
+        Marshal.Copy(ptr, image, 0, width*height*4);
+
+        if(handle != default(GCHandle)){
+            handle.Free();
+        }
+    }
 
     void Start(){
         // init
-        init();
+        init(height,width);
+
+        cameraData = new byte[width*height*4];
+        imageData = new byte[width*height*4];
+        colorData = new Color32[width*height];
+        tex = new Texture2D(height,width,TextureFormat.RGBA32,false);
+
         test_model.SetActive(false);
         test_plane.SetActive(false);
-        tex = new Texture2D(640,480,TextureFormat.RGB24,false);
+
         Camera.main.depthTextureMode = DepthTextureMode.Depth;
+        webcamTexture = new WebCamTexture(width,height,30);
+        webcamTexture.Play();
 
         if(shader != null && shader.isSupported == false){
             enabled = false;
@@ -79,7 +115,18 @@ public class Visual : MonoBehaviour{
     }
 
     void Update(){
-        int process_res = process(image,R,T,true);
+          
+        // get image
+        colorData = webcamTexture.GetPixels32();
+        Color32ToByte(colorData, cameraData);
+        transpose(cameraData,width,height,imageData);
+
+        int process_res = process(imageData,R,T,true);
+        flip(imageData,height,width,0,cameraData);
+
+        tex.LoadRawTextureData(cameraData);
+        tex.Apply();
+        rawImage.texture = tex;
 
         if(process_res != 0){
             Debug.Log("slam lost");
@@ -95,6 +142,13 @@ public class Visual : MonoBehaviour{
                     detected--;
                 }
             }
+        }
+
+        if(randCount == 0){
+            ChangeAnimation();
+            randCount = rd.Next(30 * 3, 30 * 15);
+        }else{
+            randCount--;
         }
 
 
@@ -119,9 +173,7 @@ public class Visual : MonoBehaviour{
 
             test_plane.transform.position = new Vector3(center[0],-center[1],center[2]);
             test_plane.transform.eulerAngles = Quaternion.FromToRotation(new Vector3(0,1,0), p_normal).eulerAngles;
-
             test_model.transform.position = new Vector3(center[0],-center[1],center[2]);
-            // test_model.transform.eulerAngles = Quaternion.FromToRotation(new Vector3(0,1,0), p_normal).eulerAngles;
 
             // look to camera
             Vector3 cam_model = new Vector3(T[0],-T[1],T[2]) - test_model.transform.position;
@@ -135,20 +187,46 @@ public class Visual : MonoBehaviour{
             test_plane.SetActive(true);
             detected = -1;
         }
+    }
 
-        tex.LoadRawTextureData(image);
-        tex.Apply();
+    private List<string> animationList = new List<string>{
+        "Attack","Bounce","Clicked","Death","Eat","Fear","Fly","Hit",
+        "Idle_A", "Idle_B", "Idle_C","Jump","Roll","Run","Sit","Swim","Walk"
+    };
+    
 
+    public void ChangeAnimation(){
+        Animator animator = animate_model.GetComponent<Animator>();
+        if(animator != null){
+            int index = rd.Next(0,animationList.Count);
+            animator.Play(animationList[index]);
+        }
     }
 
 
     internal void OnGUI(){
-        if(GUILayout.Button("PUT")){
+        GUIStyle fontStyle = new GUIStyle();  
+        fontStyle.alignment=TextAnchor.MiddleCenter;
+        fontStyle.fontSize=40;
+        fontStyle.normal.textColor=Color.white;
+
+
+        // if(GUILayout.Button("PUT")){
+        //     redetect = true;
+        // }
+        // if(GUILayout.Button("DEBUG")){
+        //     cxx_debug = !cxx_debug;
+        //     set_debug(cxx_debug);
+        // }
+        if(GUI.Button(new Rect(10,10,300,110),"PUT",fontStyle)){
             redetect = true;
         }
-        if(GUILayout.Button("DEBUG")){
+        if(GUI.Button(new Rect(10,130,300,230),"DEBUG",fontStyle)){
             cxx_debug = !cxx_debug;
             set_debug(cxx_debug);
+        }
+        if(GUI.Button(new Rect(10,250,300,350),"CHANGE",fontStyle)){
+            ChangeAnimation();
         }
     }
 

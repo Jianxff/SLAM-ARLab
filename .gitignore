@@ -1,4 +1,5 @@
 SLAM_lib/cmake-build-release-visual-studio
+SLAM_lib/cmake-build-release-androidndk
 SLAM_lib/test
 SLAM_lib/.idea
 SLAM_lib/.vscode
@@ -17,6 +18,16 @@ Unity_render/Config/dataset.avi
 Unity_render/Assets/Models
 
 Release
+
+Project_android/.gradle
+Project_android/.idea
+Project_android/local.properties
+Project_android/launcher/build
+Project_android/unityLibrary/build
+Project_android/unityLibrary/symbols
+Project_android/build
+
+Assets/Models
 
 .idea
 .vscode

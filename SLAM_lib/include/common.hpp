@@ -10,6 +10,9 @@
 #include <vector>
 #include <set>
 #include <opencv2/opencv.hpp>
+#include <fstream>
 
+extern std::ofstream logging;
+void logInit(std::string path);
 
 #endif //ARAR_COMMON_H

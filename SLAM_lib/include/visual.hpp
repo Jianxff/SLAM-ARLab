@@ -45,11 +45,12 @@ public:
     Visual();
     void setDebug(bool);
     void release();
-    void init(std::string path);
+    void init(std::string path, cv::Size imageSize = cv::Size(0,0));
     int process(cv::Mat &img, cv::Mat &output);
     bool detect(int iterations = 500, float threshold = 0.01);
     void showIndicator(cv::Mat &dest);
     Plane getCurrnetPlane();
+    cv::Size getImageSize();
     cv::Mat getTcw();
     cv::Mat getTwc();
 //    cv::Mat getR();
