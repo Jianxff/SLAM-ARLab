@@ -8,7 +8,7 @@
 <br>
 
 **[ARM64 Android Device]**
-![android](Assets/android.png)
+![android](Assets/Android.png)
 
 **[X64 Windows Device with USB Camera]**
 ![intro](Assets/intro.png)
