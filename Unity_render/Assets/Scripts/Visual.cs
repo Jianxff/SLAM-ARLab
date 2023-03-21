@@ -8,8 +8,9 @@ using Random = System.Random;
 using System;
 
 public class Visual : MonoBehaviour{
-    int width = 800;
-    int height = 600;
+    int width = 600;
+    int height = 800;
+   
 
     // camera variables
     byte[] imageData;
@@ -23,13 +24,13 @@ public class Visual : MonoBehaviour{
     // Camera
     public WebCamTexture webcamTexture;
     public RawImage rawImage;
-    // public RawImage display;
+    
     // render variables
     Texture2D tex;
     Material mat;
     public Shader shader;
     public GameObject test_model;
-    public GameObject test_plane;
+    //public GameObject test_plane;
     public GameObject animate_model;
     int detected = 20;
     bool put = false;
@@ -37,6 +38,7 @@ public class Visual : MonoBehaviour{
     bool cxx_debug = false;
     private Random rd = new Random();
     private int randCount = 0;
+
 
     
     // dll import
@@ -50,6 +52,8 @@ public class Visual : MonoBehaviour{
     private static extern bool detect(float[] normal, float[] center);
     [DllImport("liblocator.so")]
     private static extern void release();
+    [DllImport("liblocator.so")]
+    private static extern void draw_tetra(float scale);
 
  
     [DllImport("libcvTools.so")]
@@ -94,18 +98,18 @@ public class Visual : MonoBehaviour{
 
     void Start(){
         // init
-        init(height,width);
+        init(width,height);
 
         cameraData = new byte[width*height*4];
         imageData = new byte[width*height*4];
         colorData = new Color32[width*height];
-        tex = new Texture2D(height,width,TextureFormat.RGBA32,false);
+        tex = new Texture2D(width,height,TextureFormat.RGBA32,false);
 
         test_model.SetActive(false);
-        test_plane.SetActive(false);
+        //test_plane.SetActive(false);
 
         Camera.main.depthTextureMode = DepthTextureMode.Depth;
-        webcamTexture = new WebCamTexture(width,height,30);
+        webcamTexture = new WebCamTexture(height,width,30); // should be flip
         webcamTexture.Play();
 
         if(shader != null && shader.isSupported == false){
@@ -119,10 +123,10 @@ public class Visual : MonoBehaviour{
         // get image
         colorData = webcamTexture.GetPixels32();
         Color32ToByte(colorData, cameraData);
-        transpose(cameraData,width,height,imageData);
+        transpose(cameraData,height,width,imageData);
 
         int process_res = process(imageData,R,T,true);
-        flip(imageData,height,width,0,cameraData);
+        flip(imageData,width,height,0,cameraData);
 
         tex.LoadRawTextureData(cameraData);
         tex.Apply();
@@ -131,7 +135,7 @@ public class Visual : MonoBehaviour{
         if(process_res != 0){
             Debug.Log("slam lost");
             test_model.SetActive(false);
-            test_plane.SetActive(false);
+            //test_plane.SetActive(false);
             detected = 20;
             put = false;
         }else{
@@ -171,12 +175,12 @@ public class Visual : MonoBehaviour{
             }
             Vector3 p_normal = new Vector3(normal[0],normal[1],normal[2]);
 
-            test_plane.transform.position = new Vector3(center[0],-center[1],center[2]);
-            test_plane.transform.eulerAngles = Quaternion.FromToRotation(new Vector3(0,1,0), p_normal).eulerAngles;
+            //test_plane.transform.position = new Vector3(center[0],-center[1],center[2]);
+            //test_plane.transform.eulerAngles = Quaternion.FromToRotation(new Vector3(0,1,0), p_normal).eulerAngles;
             test_model.transform.position = new Vector3(center[0],-center[1],center[2]);
 
             // look to camera
-            Vector3 cam_model = new Vector3(T[0],-T[1],T[2]) - test_model.transform.position;
+            Vector3 cam_model = Camera.main.transform.position - test_model.transform.position;
             float dist = Vector3.Cross(cam_model,p_normal).magnitude / p_normal.magnitude;
             float t = (float) Math.Sqrt(cam_model.magnitude * cam_model.magnitude - dist * dist);
             Vector3 p_normal_ext = p_normal.normalized * t;
@@ -184,7 +188,7 @@ public class Visual : MonoBehaviour{
             test_model.transform.rotation = Quaternion.LookRotation(look, p_normal);
 
             test_model.SetActive(true);
-            test_plane.SetActive(true);
+            //test_plane.SetActive(true);
             detected = -1;
         }
     }
@@ -203,6 +207,23 @@ public class Visual : MonoBehaviour{
         }
     }
 
+    public void ChangeScale(bool up){
+        if(up == false){
+            if(test_model.transform.localScale.x <= 0.1f){
+                test_model.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
+            }else{
+                test_model.transform.localScale -= new Vector3(0.1f,0.1f,0.1f);
+            }
+            
+        }else{
+            if(test_model.transform.localScale.x >= 5.0f){
+                test_model.transform.localScale = new Vector3(5.0f,5.0f,5.0f);
+            }else{
+                test_model.transform.localScale += new Vector3(0.1f,0.1f,0.1f);
+            }
+        }
+    }
+
 
     internal void OnGUI(){
         GUIStyle fontStyle = new GUIStyle();  
@@ -210,24 +231,27 @@ public class Visual : MonoBehaviour{
         fontStyle.fontSize=40;
         fontStyle.normal.textColor=Color.white;
 
-
-        // if(GUILayout.Button("PUT")){
-        //     redetect = true;
-        // }
-        // if(GUILayout.Button("DEBUG")){
-        //     cxx_debug = !cxx_debug;
-        //     set_debug(cxx_debug);
-        // }
-        if(GUI.Button(new Rect(10,10,300,110),"PUT",fontStyle)){
-            redetect = true;
-        }
-        if(GUI.Button(new Rect(10,130,300,230),"DEBUG",fontStyle)){
+        if(GUI.Button(new Rect(10,10,300,110),"DEBUG",fontStyle)){
             cxx_debug = !cxx_debug;
             set_debug(cxx_debug);
         }
-        if(GUI.Button(new Rect(10,250,300,350),"CHANGE",fontStyle)){
+        if(GUI.Button(new Rect(30,130,300,230),"TETRA",fontStyle)){
+            draw_tetra((float)0.4);
+        }
+        if(GUI.Button(new Rect(30,250,300,350),"PUT",fontStyle)){
+            redetect = true;
+        }
+        if(GUI.Button(new Rect(30,370,300,470),"CHANGE",fontStyle)){
             ChangeAnimation();
         }
+        if(GUI.Button(new Rect(30,490,150,590),"SCALE -",fontStyle)){
+            ChangeScale(false);
+        }
+        if(GUI.Button(new Rect(170,490,300,590),"SCALE +",fontStyle)){
+            ChangeScale(true);
+        }
+         
+        
     }
 
 }
