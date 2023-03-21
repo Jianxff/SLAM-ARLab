@@ -13,6 +13,8 @@ extern "C" void set_debug(bool);
 extern "C" int process(unsigned char img[], float R[], float T[], bool show_indicator);
 extern "C" bool detect(float normal[], float center[]);
 extern "C" void release();
+//// test functions
+extern "C" void draw_tetra(float scale);
 
 
 Visual visual;
@@ -22,8 +24,8 @@ void initLog(std::string path){
 }
 
 bool init(int w, int h){
-    visual.init("/storage/emulated/0/Android/data/com.LabX.ARLab/files/Config", Size(w, h));
-    initLog("/storage/emulated/0/Android/data/com.LabX.ARLab/files/log.txt");
+    visual.init("/storage/emulated/0/Android/data/com.labx.arlab/files/Config", Size(w, h));
+    initLog("/storage/emulated/0/Android/data/com.labx.arlab/files/log.txt");
     return true;
 }
 
@@ -35,18 +37,16 @@ int process(unsigned char img[], float R[], float T[], bool show_indicator){
     Mat src, output;
     Size sz = visual.getImageSize();
 
+
     src = Mat(sz.height, sz.width, CV_8UC4, img);
     cvtColor(src, src, COLOR_RGBA2BGRA);
-
-    if(src.empty()){
-        return -1;
-    }
-
     int res = visual.process(src, output);
     if(res == 0){
         visual.detect();
         if(show_indicator)
             visual.showIndicator(output);
+        if(visual.draw_cube)
+            visual.drawCubeCenter(output);
     }
 
     // RGBA and set not transparent
@@ -79,7 +79,7 @@ bool detect(float normal[], float center[]){
         return false;
 
     Mat n = pl.normal();
-    Point3f c = visual.getCameraCenterWorld(pl);
+    Point3f c = visual.getVisualCenterWorld(pl);
 
     normal[0] = n.at<float>(0,0);
     normal[1] = n.at<float>(0,1);
@@ -92,9 +92,26 @@ bool detect(float normal[], float center[]){
     return true;
 }
 
+void draw_tetra(float scale){
+    if(scale < 0)   return;
+    visual.draw_cube = true;
+    visual.chosen = false;
+}
 
 void release(){
     visual.release();
+}
+
+Mat cross(Mat A,Mat B){
+    if(A.rows != 1 || A.cols != 3 || B.rows != 1 || B.cols != 3){
+        logging << "corss type error" << endl;
+        return Mat();
+    }
+    Mat C = (Mat_<float>(1,3) <<
+                A.at<float>(0,1)*B.at<float>(0,2) - A.at<float>(0,2)*B.at<float>(0,1),
+                A.at<float>(0,2)*B.at<float>(0,0) - A.at<float>(0,0)*B.at<float>(0,2),
+                A.at<float>(0,0)*B.at<float>(0,1) - A.at<float>(0,1)*B.at<float>(0,0));
+    return C;
 }
 
 
