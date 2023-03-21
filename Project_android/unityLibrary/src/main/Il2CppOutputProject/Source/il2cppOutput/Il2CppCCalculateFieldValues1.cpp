@@ -3725,24 +3725,22 @@ struct Visual_t6C0551F9F8B17E03EF2490BA3803185378104868  : public MonoBehaviour_
 	Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* ___shader_17;
 	// UnityEngine.GameObject Visual::test_model
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___test_model_18;
-	// UnityEngine.GameObject Visual::test_plane
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___test_plane_19;
 	// UnityEngine.GameObject Visual::animate_model
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___animate_model_20;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___animate_model_19;
 	// System.Int32 Visual::detected
-	int32_t ___detected_21;
+	int32_t ___detected_20;
 	// System.Boolean Visual::put
-	bool ___put_22;
+	bool ___put_21;
 	// System.Boolean Visual::redetect
-	bool ___redetect_23;
+	bool ___redetect_22;
 	// System.Boolean Visual::cxx_debug
-	bool ___cxx_debug_24;
+	bool ___cxx_debug_23;
 	// System.Random Visual::rd
-	Random_t79716069EDE67D1D7734F60AE402D0CA3FB6B4C8* ___rd_25;
+	Random_t79716069EDE67D1D7734F60AE402D0CA3FB6B4C8* ___rd_24;
 	// System.Int32 Visual::randCount
-	int32_t ___randCount_26;
+	int32_t ___randCount_25;
 	// System.Collections.Generic.List`1<System.String> Visual::animationList
-	List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* ___animationList_27;
+	List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* ___animationList_26;
 };
 
 // Mono.Security.ASN1
@@ -5519,9 +5517,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3292[8] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3293[1] = 
 {
 	static_cast<int32_t>(offsetof(Control_t173E621579F19553D3CDA3C97DA9068EFF1C9694, ___model_scale_4)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3294[24] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3294[23] = 
 {
-	static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___width_4)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___height_5)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___imageData_6)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___cameraData_7)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___colorData_8)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___R_9)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___T_10)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___normal_11)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___center_12)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___webcamTexture_13)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___rawImage_14)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___tex_15)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___mat_16)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___shader_17)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___test_model_18)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___test_plane_19)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___animate_model_20)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___detected_21)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___put_22)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___redetect_23)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___cxx_debug_24)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___rd_25)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___randCount_26)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___animationList_27)),};
+	static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___width_4)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___height_5)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___imageData_6)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___cameraData_7)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___colorData_8)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___R_9)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___T_10)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___normal_11)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___center_12)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___webcamTexture_13)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___rawImage_14)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___tex_15)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___mat_16)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___shader_17)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___test_model_18)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___animate_model_19)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___detected_20)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___put_21)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___redetect_22)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___cxx_debug_23)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___rd_24)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___randCount_25)),static_cast<int32_t>(offsetof(Visual_t6C0551F9F8B17E03EF2490BA3803185378104868, ___animationList_26)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3297[3] = 
 {
 	static_cast<int32_t>(offsetof(RemoteSettings_t9DFFC747AB3E7A39DF4527F245B529A407427250_StaticFields, ___Updated_0)),static_cast<int32_t>(offsetof(RemoteSettings_t9DFFC747AB3E7A39DF4527F245B529A407427250_StaticFields, ___BeforeFetchFromServer_1)),static_cast<int32_t>(offsetof(RemoteSettings_t9DFFC747AB3E7A39DF4527F245B529A407427250_StaticFields, ___Completed_2)),};

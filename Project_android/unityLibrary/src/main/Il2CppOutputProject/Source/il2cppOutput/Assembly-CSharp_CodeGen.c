@@ -54,29 +54,33 @@ extern void Visual_process_mDF9A8C83DB023AE596B4A2276D2524E672416699 (void);
 extern void Visual_detect_mFD06200FA2963F3A80C9F37400422B255DA73B46 (void);
 // 0x00000015 System.Void Visual::release()
 extern void Visual_release_mBEC38BF27340CCDEE590D864D7BC9548291446B8 (void);
-// 0x00000016 System.Void Visual::rotate(System.Byte[],System.Int32,System.Int32,System.Int32,System.Byte[])
+// 0x00000016 System.Void Visual::draw_tetra(System.Single)
+extern void Visual_draw_tetra_mB47AFBEE5DF23EE7C71FE721294F0261244F6696 (void);
+// 0x00000017 System.Void Visual::rotate(System.Byte[],System.Int32,System.Int32,System.Int32,System.Byte[])
 extern void Visual_rotate_m23C3B9683345059504ED8FE69C5BD3859959F756 (void);
-// 0x00000017 System.Void Visual::flip(System.Byte[],System.Int32,System.Int32,System.Int32,System.Byte[])
+// 0x00000018 System.Void Visual::flip(System.Byte[],System.Int32,System.Int32,System.Int32,System.Byte[])
 extern void Visual_flip_mA376173E1FECDE12A1899EAA2F70D272CFFC6680 (void);
-// 0x00000018 System.Void Visual::transpose(System.Byte[],System.Int32,System.Int32,System.Byte[])
+// 0x00000019 System.Void Visual::transpose(System.Byte[],System.Int32,System.Int32,System.Byte[])
 extern void Visual_transpose_m9D6952989F346B84CA34949802A0AD085D88D777 (void);
-// 0x00000019 System.Void Visual::OnRenderImage(UnityEngine.RenderTexture,UnityEngine.RenderTexture)
+// 0x0000001A System.Void Visual::OnRenderImage(UnityEngine.RenderTexture,UnityEngine.RenderTexture)
 extern void Visual_OnRenderImage_mE3BF330E474D6A0E34307403443A09C98788F18B (void);
-// 0x0000001A UnityEngine.Material Visual::get_material()
+// 0x0000001B UnityEngine.Material Visual::get_material()
 extern void Visual_get_material_mE016FD54DF457B5F119CAAFB78CFED2F91D1AF82 (void);
-// 0x0000001B System.Void Visual::Color32ToByte(UnityEngine.Color32[],System.Byte[])
+// 0x0000001C System.Void Visual::Color32ToByte(UnityEngine.Color32[],System.Byte[])
 extern void Visual_Color32ToByte_m7DF7EE5538AE77644C106BF33937994F0BB810EB (void);
-// 0x0000001C System.Void Visual::Start()
+// 0x0000001D System.Void Visual::Start()
 extern void Visual_Start_m6BF5F9F9B9878A2B4A011024E9846B227F729A12 (void);
-// 0x0000001D System.Void Visual::Update()
+// 0x0000001E System.Void Visual::Update()
 extern void Visual_Update_m68938F8F9C782126DEEEB83E14B703CE32B7E1A8 (void);
-// 0x0000001E System.Void Visual::ChangeAnimation()
+// 0x0000001F System.Void Visual::ChangeAnimation()
 extern void Visual_ChangeAnimation_m388918B83BDE6ADDB89E5E7AE619EEAFA5969561 (void);
-// 0x0000001F System.Void Visual::OnGUI()
+// 0x00000020 System.Void Visual::ChangeScale(System.Boolean)
+extern void Visual_ChangeScale_m8BB96F248A3E0DFF625BEC47B5E94189571BDCCB (void);
+// 0x00000021 System.Void Visual::OnGUI()
 extern void Visual_OnGUI_mCCDC9ECF1068E7382A3BD154B7580ACA986BD3D1 (void);
-// 0x00000020 System.Void Visual::.ctor()
+// 0x00000022 System.Void Visual::.ctor()
 extern void Visual__ctor_mB53369B84F0285E4DF4C44E1635BC626CFF8CF4A (void);
-static Il2CppMethodPointer s_methodPointers[32] = 
+static Il2CppMethodPointer s_methodPointers[34] = 
 {
 	Demo_Start_m806465496F7D4ED43DF7DE4288205BE6FDC90803,
 	Demo_Update_mA56BCC789ECB8EA60415DE2336840979C399D1EF,
@@ -99,6 +103,7 @@ static Il2CppMethodPointer s_methodPointers[32] =
 	Visual_process_mDF9A8C83DB023AE596B4A2276D2524E672416699,
 	Visual_detect_mFD06200FA2963F3A80C9F37400422B255DA73B46,
 	Visual_release_mBEC38BF27340CCDEE590D864D7BC9548291446B8,
+	Visual_draw_tetra_mB47AFBEE5DF23EE7C71FE721294F0261244F6696,
 	Visual_rotate_m23C3B9683345059504ED8FE69C5BD3859959F756,
 	Visual_flip_mA376173E1FECDE12A1899EAA2F70D272CFFC6680,
 	Visual_transpose_m9D6952989F346B84CA34949802A0AD085D88D777,
@@ -108,10 +113,11 @@ static Il2CppMethodPointer s_methodPointers[32] =
 	Visual_Start_m6BF5F9F9B9878A2B4A011024E9846B227F729A12,
 	Visual_Update_m68938F8F9C782126DEEEB83E14B703CE32B7E1A8,
 	Visual_ChangeAnimation_m388918B83BDE6ADDB89E5E7AE619EEAFA5969561,
+	Visual_ChangeScale_m8BB96F248A3E0DFF625BEC47B5E94189571BDCCB,
 	Visual_OnGUI_mCCDC9ECF1068E7382A3BD154B7580ACA986BD3D1,
 	Visual__ctor_mB53369B84F0285E4DF4C44E1635BC626CFF8CF4A,
 };
-static const int32_t s_InvokerIndices[32] = 
+static const int32_t s_InvokerIndices[34] = 
 {
 	3204,
 	3204,
@@ -130,10 +136,11 @@ static const int32_t s_InvokerIndices[32] =
 	3204,
 	3204,
 	4199,
-	4862,
+	4861,
 	3633,
 	4211,
 	4968,
+	4874,
 	3539,
 	3539,
 	3782,
@@ -143,6 +150,7 @@ static const int32_t s_InvokerIndices[32] =
 	3204,
 	3204,
 	3204,
+	2573,
 	3204,
 	3204,
 };
@@ -150,7 +158,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	32,
+	34,
 	s_methodPointers,
 	0,
 	NULL,
