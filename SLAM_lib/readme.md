@@ -12,10 +12,15 @@ Built shared library `locator` with **`ORB-SLAM2`**
 
 ## Schedule
 #### Onworking
-- [ ] improve plane detector with more precise
+- [ ] improve the tracking effect on ORB-SLAM2 with more track points
+- [ ] improve plane detector with more accuracy
 - [ ] filter tracking points on dynamic objects using `yolov5`
 
 #### 2023.3.21
+- [x] construct the transform matrix from plane to world, which makes the plane indicator more precise
+- [x] fix some compile errors on `ORB-SLAM2` when using `NDK/clang++`
+
+#### 2023.3.20
 - [x] add building target at `arm64` for Android devices
 
 #### 2023.3.19

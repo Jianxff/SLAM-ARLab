@@ -39,7 +39,31 @@ else()
     message("Unknown target type")
 endif()
 
+# g2o
+if(EXISTS ${LIBS_DIR}/${G2O_LIB_NAME})
+    message("Linking g2o")
+    add_library(g2o SHARED IMPORTED)
+    set_target_properties(g2o PROPERTIES IMPORTED_IMPLIB ${LIBS_DIR}/${G2O_LIB_NAME})
+    if(TARGET_TYPE STREQUAL "arm64")
+        set_target_properties(g2o PROPERTIES IMPORTED_LOCATION ${LIBS_DIR}/${G2O_LIB_NAME})
+    endif()
 
+else()
+    message("Rebuilding g2o")
+    file(GLOB_RECURSE g2o_types "Thirdparty/g2o/g2o/types/*.h" "Thirdparty/g2o/g2o/types/*.hpp"  "Thirdparty/g2o/g2o/types/*.cpp" )
+    file(GLOB_RECURSE g2o_solvers "Thirdparty/g2o/g2o/solvers/*.h")
+    file(GLOB_RECURSE g2o_core "Thirdparty/g2o/g2o/core/*.h" "Thirdparty/g2o/g2o/core/*.hpp" "Thirdparty/g2o/g2o/core/*.cpp")
+    file(GLOB_RECURSE g2o_stuff "Thirdparty/g2o/g2o/stuff/*.h" "Thirdparty/g2o/g2o/stuff/*.c" "Thirdparty/g2o/g2o/stuff/*.cpp")
+
+    add_library(g2o SHARED
+            ${g2o_types}
+            ${g2o_solvers}
+            ${g2o_core}
+            ${g2o_stuff}
+            )
+endif()
+
+# slam
 if(EXISTS ${LIBS_DIR}/${SLAM_LIB_NAME})
     message("Linking SLAM")
     add_library(slam SHARED IMPORTED)
@@ -50,30 +74,6 @@ if(EXISTS ${LIBS_DIR}/${SLAM_LIB_NAME})
 
 else()
     message("Rebuilding SLAM")
-    if(EXISTS ${LIBS_DIR}/${G2O_LIB_NAME})
-        message("Linking g2o")
-        add_library(g2o SHARED IMPORTED)
-        set_target_properties(g2o PROPERTIES IMPORTED_IMPLIB ${LIBS_DIR}/${G2O_LIB_NAME})
-        if(TARGET_TYPE STREQUAL "arm64")
-            set_target_properties(g2o PROPERTIES IMPORTED_LOCATION ${LIBS_DIR}/${G2O_LIB_NAME})
-        endif()
-
-
-    else()
-        message("Rebuilding g2o")
-        file(GLOB_RECURSE g2o_types "Thirdparty/g2o/g2o/types/*.h" "Thirdparty/g2o/g2o/types/*.hpp"  "Thirdparty/g2o/g2o/types/*.cpp" )
-        file(GLOB_RECURSE g2o_solvers "Thirdparty/g2o/g2o/solvers/*.h")
-        file(GLOB_RECURSE g2o_core "Thirdparty/g2o/g2o/core/*.h" "Thirdparty/g2o/g2o/core/*.hpp" "Thirdparty/g2o/g2o/core/*.cpp")
-        file(GLOB_RECURSE g2o_stuff "Thirdparty/g2o/g2o/stuff/*.h" "Thirdparty/g2o/g2o/stuff/*.c" "Thirdparty/g2o/g2o/stuff/*.cpp")
-
-        add_library(g2o SHARED
-                ${g2o_types}
-                ${g2o_solvers}
-                ${g2o_core}
-                ${g2o_stuff}
-                )
-    endif()
-
     file(GLOB_RECURSE slam_include "Thirdparty/SLAM/include/*.h")
     file(GLOB_RECURSE slam_src "Thirdparty/SLAM/src/*.cc")
     file(GLOB_RECURSE dbow2 "Thirdparty/DBoW2/DBoW2/*.h" "Thirdparty/DBoW2/DBoW2/*.cpp")
@@ -90,7 +90,6 @@ else()
             libg2o
             ${OpenCV_LIBS}
             )
-
 endif()
 
 # main shared library
