@@ -31,32 +31,54 @@ class Visual {
     std::vector<cv::KeyPoint> mvKeyPoints;
     std::vector<cv::Point3f>  mvPlanePoints;
     cv::Mat mTcw, mTwc;
+    cv::Point3f mCameraPosition;
 
     // Plane detect
-    const float mChooseRange = 80;
+    float mChooseRange = 80;
     Plane mPlane;
 
-    // functions
-    cv::Point2f world2image(cv::Point3f);
+    // points transform
     cv::Point3f camera2world(cv::Point3f);
     cv::Point3f world2camera(cv::Point3f);
+    cv::Point2f world2image(cv::Point3f);
+    cv::Point2f camera2image(cv::Point3f);
+
+
 
 public:
+    // initialize
     Visual();
-    void setDebug(bool);
-    void release();
     void init(std::string path, cv::Size imageSize = cv::Size(0,0));
+
+    // tracking points and process image
     int process(cv::Mat &img, cv::Mat &output);
+
+    // plane detect and indicator
     bool detect(int iterations = 500, float threshold = 0.01);
     void showIndicator(cv::Mat &dest);
     Plane getCurrnetPlane();
+
+    // debug and release
+    void setDebug(bool);
+    void release();
+
+    // get visual center points in the world coordinate
+    cv::Point3f getVisualCenterWorld(Plane);
+
+    // getter functions
     cv::Size getImageSize();
+    cv::Point3f getCameraPosition();
     cv::Mat getTcw();
     cv::Mat getTwc();
-//    cv::Mat getR();
-//    cv::Mat getT();
-    // test function
-    cv::Point3f getCameraCenterWorld(Plane);
+
+    /**
+     * test functions
+     */
+     // draw cubes
+     bool draw_cube = false;
+     bool chosen = false;
+     void drawCubeCenter(cv::Mat &img, float scale = 0.2);
+
 };
 
 
