@@ -30,7 +30,7 @@
 
 #include<mutex>
 #include<thread>
-#include <windows.h>
+#include "PlatformSleep.h"
 
 namespace ORB_SLAM2
 {
@@ -81,7 +81,7 @@ void LoopClosing::Run()
         if(CheckFinish())
             break;
 
-        Sleep(5);
+        sleep_platform(5);
     }
 
     SetFinish();
@@ -425,7 +425,7 @@ void LoopClosing::CorrectLoop()
     // Wait until Local Mapping has effectively stopped
     while(!mpLocalMapper->isStopped())
     {
-        Sleep(3);
+        sleep_platform(3);
     }
 
     // Ensure current keyframe is updated
@@ -627,7 +627,7 @@ void LoopClosing::RequestReset()
         if(!mbResetRequested)
             break;
         }
-        Sleep(5);
+        sleep_platform(5);
     }
 }
 
@@ -667,7 +667,7 @@ void LoopClosing::RunGlobalBundleAdjustment(unsigned long nLoopKF)
 
             while(!mpLocalMapper->isStopped() && !mpLocalMapper->isFinished())
             {
-                Sleep(1);
+                sleep_platform(1);
             }
 
             // Get Map Mutex

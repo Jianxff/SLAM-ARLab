@@ -24,7 +24,7 @@
 #include "Converter.h"
 #include <thread>
 #include <iomanip>
-#include <windows.h>
+#include "PlatformSleep.h"
 
 namespace ORB_SLAM2
 {
@@ -125,7 +125,7 @@ cv::Mat System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, const
             // Wait until Local Mapping has effectively stopped
             while(!mpLocalMapper->isStopped())
             {
-                Sleep(1);
+                sleep_platform(1);
             }
 
             mpTracker->InformOnlyTracking(true);
@@ -176,7 +176,7 @@ cv::Mat System::TrackRGBD(const cv::Mat &im, const cv::Mat &depthmap, const doub
             // Wait until Local Mapping has effectively stopped
             while(!mpLocalMapper->isStopped())
             {
-                Sleep(1);
+                sleep_platform(1);
             }
 
             mpTracker->InformOnlyTracking(true);
@@ -227,7 +227,7 @@ cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
             // Wait until Local Mapping has effectively stopped
             while(!mpLocalMapper->isStopped())
             {
-                Sleep(1);
+                sleep_platform(1);
             }
 
             mpTracker->InformOnlyTracking(true);
@@ -300,7 +300,7 @@ void System::Shutdown()
     // Wait until all thread have effectively stopped
     while(!mpLocalMapper->isFinished() || !mpLoopCloser->isFinished() || mpLoopCloser->isRunningGBA())
     {
-        Sleep(5);
+        sleep_platform(5);
     }
 }
 

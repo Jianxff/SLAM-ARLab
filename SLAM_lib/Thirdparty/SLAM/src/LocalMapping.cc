@@ -22,7 +22,7 @@
 #include "LoopClosing.h"
 #include "ORBmatcher.h"
 #include "Optimizer.h"
-#include <windows.h>
+#include "PlatformSleep.h"
 #include<mutex>
 
 namespace ORB_SLAM2
@@ -91,7 +91,7 @@ void LocalMapping::Run()
             // Safe area to stop
             while(isStopped() && !CheckFinish())
             {
-                Sleep(3);
+                sleep_platform(3);
             }
             if(CheckFinish())
                 break;
@@ -105,7 +105,7 @@ void LocalMapping::Run()
         if(CheckFinish())
             break;
 
-        Sleep(3);
+        sleep_platform(3);
     }
 
     SetFinish();
@@ -716,7 +716,7 @@ void LocalMapping::RequestReset()
             if(!mbResetRequested)
                 break;
         }
-        Sleep(3);
+        sleep_platform(3);
     }
 }
 

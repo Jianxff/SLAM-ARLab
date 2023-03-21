@@ -30,7 +30,7 @@
 #ifdef _MSC_VER
 #include <memory>
 #else
-#include <tr1/memory>
+#include <memory>
 #endif
 #include <Eigen/Core>
 

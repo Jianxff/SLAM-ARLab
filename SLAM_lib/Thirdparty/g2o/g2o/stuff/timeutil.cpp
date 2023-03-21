@@ -29,7 +29,7 @@
 
 #ifdef _WINDOWS
 #include <time.h>
-#include <windows.h>
+#include "PlatformSleep.h"
 #endif
 
 #ifdef UNIX

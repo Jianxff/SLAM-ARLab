@@ -34,7 +34,6 @@
 #include"PnPsolver.h"
 
 #include<iostream>
-#include <windows.h>
 #include<mutex>
 
 
