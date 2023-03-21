@@ -3,6 +3,7 @@ SLAM_lib/cmake-build-release-androidndk
 SLAM_lib/test
 SLAM_lib/.idea
 SLAM_lib/.vscode
+SLAM_lib/.git
 
 Unity_render/Assets/*.meta
 Unity_render/Library
@@ -16,6 +17,7 @@ Unity_render/.vscode
 Unity_render/Temp
 Unity_render/Config/dataset.avi
 Unity_render/Assets/Models
+Unity_render/.git
 
 Release
 
@@ -26,9 +28,11 @@ Project_android/launcher/build
 Project_android/unityLibrary/build
 Project_android/unityLibrary/symbols
 Project_android/build
+Project_android/.git
 
 Assets/Models
 
 .idea
 .vscode
 .git
+
