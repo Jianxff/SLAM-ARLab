@@ -41,14 +41,19 @@
 
 - To use the app, don't forget to grant the camera permission. On the UI, you can press `PUT` button to re-put the AR model, which will look at the camera just as it done on windows. Press `DEBUG` button to view track points on slam-system, the plane detected and the original point of the world-coordinate-system.
 
-- The Sparrow model will randomly change its animation from 5s to 15s. You can also manually change the animation by pressing the `CHANGE` button.
+- The Sparrow model will randomly change its animation from 5s to 15s. You can also manually change the animation by pressing the `CHANGE` button. To change the scale of the model, pressing `SCALE-` and `SCALE+` buttons.
+
+- It is now tested to put a tetra on the plane detected, which is drawn by `OpenCV` instead of unity3D. Press the button `Tetra` to take a try.
 
 - **[NOTICE]** When first installing the app, you need to copy the `Config` folder to the `/storage/emulated/0/Android/data/com.labx.arlab/files/` directory so that the app can find config files. The zipped file of `Config` folder is in the `Assets` directory of the repo and also at the `release` page.
+
+- **[IMPORTANT]** To make your AR model more accurate, you'd better calibrate your camera and set calibtation parameters in the 'Config/ORB.yaml' file. Pay attention that the camera is opened as `600*800`, and the scene is set fitting the height of your device. So the `Camera.fx` and `Camera.fy` are better set to `${YOUR_SCREEN_HEIGHT}/4*3`.
 
 ## On Working
 - [ ] **MORE** interactive operations
 - [ ] **MORE** beautiful user-interface
-- [ ] **IMPROVE** the accuracy of plane detected on SLAM system
+- [ ] **IMPROVE** the tracking effect of SLAM system
+- [x] **IMPROVE** the accuracy of plane detected on SLAM system
 - [ ] **IMPORT** `Yolo` to solve the problem of *dynamic* objects and *covered* objects
 - [x] **EXPORT** and build application for `Android` devices
 
