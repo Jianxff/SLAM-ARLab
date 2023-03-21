@@ -10,7 +10,8 @@ class Plane{
     bool mAvailable = false;
     float mA = 0,mB = 0,mC = 0,mD = 0;
     const float mSameLineThreshold = 1e-3;
-    cv::Point3f mAvgCenter;
+    cv::Mat mTwp;
+    cv::Mat mTpw;
 
 public:
     Plane();
@@ -20,7 +21,11 @@ public:
     bool compute(cv::Point3f, cv::Point3f, cv::Point3f);
     bool fit(std::vector<cv::Point3f>&, int iterations = 500, float threshold = 0.01);
 
-    cv::Mat normal();
+    // calculate Twp
+    void computeTwp(cv::Point3f original);
+    cv::Point3f plane2world(cv::Point3f pp);
+    cv::Point3f plane2world(cv::Point2f pp);
+
 
     // calculation
     float distance(cv::Point3f);
@@ -30,7 +35,7 @@ public:
     float count(cv::Point3f);
 
     // getter
-    cv::Point3f avgCenter(){return mAvgCenter;}
+    cv::Mat normal();
     float A(){return mA;}
     float B(){return mB;}
     float C(){return mC;}

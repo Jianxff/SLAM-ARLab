@@ -3,8 +3,10 @@
 //
 
 #include "plane.hpp"
+#include "common.hpp"
 using namespace std;
 using namespace cv;
+
 Plane::Plane() {
     mA = 0;mB = 0;mC = 0;mD = 0;
     mAvailable = false;
@@ -13,6 +15,8 @@ Plane::Plane() {
 void Plane::copyTo(Plane & p) {
     p.mA = mA;p.mB = mB;p.mC = mC;p.mD = mD;
     p.mAvailable = mAvailable;
+    p.mTwp = mTwp.clone();
+    p.mTpw = mTpw.clone();
 }
 
 void Plane::reset() {
@@ -81,23 +85,53 @@ bool Plane::fit(std::vector<cv::Point3f>& p, int iterations, float threshold) {
 
         if(inliers >= p.size() * 0.9)  break;
     }
-
-    if(mAvailable){
-        // compute average center
-        mAvgCenter = Point3f(0,0,0);
-        for(auto& itPt:p) {
-            if (distance(itPt) < threshold) {
-                mAvgCenter += itPt;
-            }
-        }
-        mAvgCenter /= (float)p.size();
-    }
     return mAvailable;
 }
 
+// compute Twp
+void Plane::computeTwp(Point3f po){
+    if(!mAvailable) return;
+    countZ(po);
+
+    Mat mx = (Mat_<float>(1,3) << 1, 1, countZ(po.x + 1, po.y + 1) - po.z);
+    Mat mz = normal().clone();
+    Mat my = cross(mx, mz).clone();
+
+    cv::normalize(mx, mx);
+    cv::normalize(my, my);
+    cv::normalize(mz, mz);
+    mx /= sqrt(3);
+    my /= sqrt(3);
+    mz /= sqrt(3);
+
+    mTwp = (Mat_<float>(4,4)
+            << mx.at<float>(0), my.at<float>(0), mz.at<float>(0), po.x,
+            mx.at<float>(1), my.at<float>(1), mz.at<float>(1), po.y,
+            mx.at<float>(2), my.at<float>(2), mz.at<float>(2), po.z,
+            0, 0, 0, 1);
+    mTpw = mTwp.inv();
+}
+
+// plane to world
+Point3f Plane::plane2world(cv::Point3f pp) {
+    if(!mAvailable) return Point3f(0,0,0);
+
+    Mat ppm = (Mat_<float>(4,1) << pp.x, pp.y, pp.z, 1);
+    Mat pw = mTwp * ppm;
+    return Point3f(pw.at<float>(0), pw.at<float>(1), pw.at<float>(2));
+}
+
+Point3f Plane::plane2world(cv::Point2f pp) {
+    return plane2world(Point3f(pp.x, pp.y, 0));
+}
+
+// getter
 Mat Plane::normal() {
+    if(!mAvailable) return (Mat_<float>(1,3) << 0, 0, 0);
+
     Mat n = (Mat_<float>(1,3) << mA, mB, mC);
     cv::normalize(n, n);
+    if(n.at<float>(1) > 0) n = -n;
     return n;
 }
 
