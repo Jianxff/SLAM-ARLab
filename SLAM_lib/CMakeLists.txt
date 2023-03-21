@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
 project(ARLab)
 set(CMAKE_CXX_STANDARD 14)
-set(LIBS_DIR  ${CMAKE_BINARY_DIR}/../libs)
+
 
 
 # set target type for x64 or arm64
@@ -13,14 +13,18 @@ include_directories(Thirdparty/SLAM/include)
 include_directories(Thirdparty)
 
 #build for x64 platform
-if(TARGET_TYPE EQUAL "x64")
+if(TARGET_TYPE STREQUAL "x64")
+    message("Building for x64")
+    set(LIBS_DIR  ${CMAKE_BINARY_DIR}/../libs)
     set(SLAM_LIB_NAME slam.dll)
     set(G2O_LIB_NAME g2o.dll)
     set(OpenCV_DIR D:/.env/opencv4.6/build/x64/vc15/lib)
     find_package( OpenCV REQUIRED )
     include_directories( ${OpenCV_INCLUDE_DIRS})
 
-elseif(TARGET_TYPE EQUAL "arm64")
+elseif(TARGET_TYPE STREQUAL "arm64")
+    message("Building for arm64")
+    set(LIBS_DIR  ${CMAKE_BINARY_DIR}/../libs/Android)
     set(SLAM_LIB_NAME libslam.so)
     set(G2O_LIB_NAME libg2o.so)
     add_library(OpenCV_Java SHARED IMPORTED)
@@ -31,7 +35,8 @@ elseif(TARGET_TYPE EQUAL "arm64")
 
     set(OpenCV_INCLUDE_DIRS D:/.env/opencv4.6-android/OpenCV-android-sdk/sdk/native/jni/include)
     include_directories( ${OpenCV_INCLUDE_DIRS})
-
+else()
+    message("Unknown target type")
 endif()
 
 
@@ -39,7 +44,7 @@ if(EXISTS ${LIBS_DIR}/${SLAM_LIB_NAME})
     message("Linking SLAM")
     add_library(slam SHARED IMPORTED)
     set_target_properties(slam PROPERTIES IMPORTED_IMPLIB ${LIBS_DIR}/${SLAM_LIB_NAME})
-    if(TARGET_TYPE EQUAL "arm64")
+    if(TARGET_TYPE STREQUAL "arm64")
         set_target_properties(slam PROPERTIES IMPORTED_LOCATION ${LIBS_DIR}/${SLAM_LIB_NAME})
     endif()
 
@@ -49,7 +54,7 @@ else()
         message("Linking g2o")
         add_library(g2o SHARED IMPORTED)
         set_target_properties(g2o PROPERTIES IMPORTED_IMPLIB ${LIBS_DIR}/${G2O_LIB_NAME})
-        if(TARGET_TYPE EQUAL "arm64")
+        if(TARGET_TYPE STREQUAL "arm64")
             set_target_properties(g2o PROPERTIES IMPORTED_LOCATION ${LIBS_DIR}/${G2O_LIB_NAME})
         endif()
 
@@ -81,7 +86,7 @@ else()
             ${dutils}
             )
 
-    target_link_libraries(libslam
+    target_link_libraries(slam
             libg2o
             ${OpenCV_LIBS}
             )
@@ -93,10 +98,10 @@ file(GLOB_RECURSE include "include/*.hpp")
 file(GLOB_RECURSE src_x64 "src_x64/*.cpp")
 file(GLOB_RECURSE src_arm64 "src_arm64/*.cpp")
 
-if(TARGET_TYPE EQUAL "x64")
+if(TARGET_TYPE STREQUAL "x64")
     add_library(locator SHARED
             ${include}
-            ${src}
+            ${src_x64}
             )
 
     target_link_libraries(locator
@@ -105,17 +110,17 @@ if(TARGET_TYPE EQUAL "x64")
             g2o
             )
 
-elseif(TARGET_TYPE EQUAL "arm64")
+elseif(TARGET_TYPE STREQUAL "arm64")
     add_library(locator SHARED
-        ${include}
-        ${src}
-        )
+            ${include}
+            ${src_arm64}
+            )
 
-target_link_libraries(locator
-        OpenCV_Java
-        slam
-        g2o
-        )
+    target_link_libraries(locator
+            OpenCV_Java
+            slam
+            g2o
+            )
 endif()
 
 
