@@ -3,14 +3,14 @@
 //
 #include "common.hpp"
 #include "visual.hpp"
-ofstream logging;
+
 using namespace std;
 using namespace cv;
 
 
 extern "C" bool init(int, int);
 extern "C" void set_debug(bool);
-extern "C" int process(unsigned char img[], float R[], float T[], bool show_indicator);
+extern "C" int process(unsigned char img[],unsigned char dst[], float R[], float T[]);
 extern "C" bool detect(float normal[], float center[]);
 extern "C" void release();
 //// test functions
@@ -18,14 +18,14 @@ extern "C" void draw_tetra(float scale);
 
 
 Visual visual;
-
-void initLog(std::string path){
-    logging.open(path, ios::out);
-}
+ofstream fout("/storage/emulated/0/Android/data/com.labx.arlab/files/log.txt"); // redirect cout to file
 
 bool init(int w, int h){
+    cerr.rdbuf(fout.rdbuf());
+    cout.rdbuf(fout.rdbuf());
     visual.init("/storage/emulated/0/Android/data/com.labx.arlab/files/Config", Size(w, h));
-    initLog("/storage/emulated/0/Android/data/com.labx.arlab/files/log.txt");
+
+
     return true;
 }
 
@@ -33,30 +33,31 @@ void set_debug(bool d){
     visual.setDebug(d);
 }
 
-int process(unsigned char img[], float R[], float T[], bool show_indicator){
+int process(unsigned char img[],unsigned char dst[], float R[], float T[]){
     Mat src, output;
     Size sz = visual.getImageSize();
-
-
     src = Mat(sz.height, sz.width, CV_8UC4, img);
-    cvtColor(src, src, COLOR_RGBA2BGRA);
+    cvtColor(src, src, COLOR_RGBA2BGR);
+
     int res = visual.process(src, output);
+
     if(res == 0){
         visual.detect();
-        if(show_indicator)
-            visual.showIndicator(output);
+//        if(show_indicator)
+//            visual.showIndicator(output);
         if(visual.draw_cube)
             visual.drawCubeCenter(output);
     }
 
-    // RGBA and set not transparent
-    cvtColor(output,output,COLOR_BGRA2RGBA);
-    for(int i = 0; i < output.rows; i++){
-        for(int j = 0; j < output.cols; j++){
-            output.at<Vec4b>(i,j)[3] = 255;
-        }
-    }
-    memcpy(img, output.data, output.cols * output.rows * 4);
+//    // RGBA and set not transparent
+//    cvtColor(output,output,COLOR_BGRA2RGBA);
+//    for(int i = 0; i < output.rows; i++){
+//        for(int j = 0; j < output.cols; j++){
+//            output.at<Vec4b>(i,j)[3] = 255;
+//        }
+//    }
+    cvtColor(output, output, COLOR_BGR2RGB);
+    memcpy(dst, output.data, output.cols * output.rows * 3);
 
     if(res == 0){
         // process R and T
@@ -104,7 +105,7 @@ void release(){
 
 Mat cross(Mat A,Mat B){
     if(A.rows != 1 || A.cols != 3 || B.rows != 1 || B.cols != 3){
-        logging << "corss type error" << endl;
+        cout << "corss type error" << endl;
         return Mat();
     }
     Mat C = (Mat_<float>(1,3) <<

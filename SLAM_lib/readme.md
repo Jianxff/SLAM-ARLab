@@ -12,10 +12,16 @@ Built shared library `locator` with **`ORB-SLAM2`**
 
 ## Schedule
 #### Onworking
-- [ ] improve the tracking effect on ORB-SLAM2 with more track points
+- [x] improve the tracking effect on ORB-SLAM2 with more track points
 - [ ] improve plane detector with more accuracy
 - [ ] filter tracking points on dynamic objects using `yolov5`
 
+#### 2023.3.23
+- [x] redirect the standard output to `log.txt`
+- [x] improve processing speed by prevent processing the transparent of the image, that is, cutting the `Alpha` channel of input images.
+- [x] switch render of plane-indicator from `OpenCV` to `Unity`
+- [x] fix bugs on `ORB-SLAM2` which makes the initialization for mono camera slow
+ 
 #### 2023.3.21
 - [x] construct the transform matrix from plane to world, which makes the plane indicator more precise
 - [x] fix some compile errors on `ORB-SLAM2` when using `NDK/clang++`

@@ -12,8 +12,6 @@
 #include <opencv2/opencv.hpp>
 #include <fstream>
 
-extern std::ofstream logging;
-void logInit(std::string path);
 cv::Mat cross(cv::Mat,cv::Mat);
 
 #endif //ARAR_COMMON_H

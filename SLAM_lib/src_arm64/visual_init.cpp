@@ -23,12 +23,12 @@ void Visual::setDebug(bool d) {
 
 void Visual::init(string path, Size sz) {
     mImageSize = sz;
-    if(sz.width == 0 && sz.height == 0) {
-        logging << "No Image Size Set" << endl;
+    if(sz.width == 0 || sz.height == 0) {
+        cout << "No Image Size Set" << endl;
         ::abort();
     }
 
-    string image_path = path + "/indicator.png";
+//    string image_path = path + "/indicator.png";
     string voc_path = path + "/ORBvoc.bin";
     string settings_path = path + "/ORB.yaml";
 
@@ -54,16 +54,16 @@ void Visual::init(string path, Size sz) {
     fSetting.release();
 
     // read indicator
-    mIndicatorImage = cv::imread(image_path, cv::IMREAD_UNCHANGED);
-    mIndicatorCorner = {
-            Point2f (0,0),
-            Point2f (0,mIndicatorImage.rows - 1),
-            Point2f (mIndicatorImage.rows - 1,mIndicatorImage.cols - 1),
-            Point2f (mIndicatorImage.cols - 1,0),
-
-    };
-    // black mask
-    mImageMask = cv::Mat::zeros(mImageSize.height, mImageSize.width, CV_8UC4);
+//    mIndicatorImage = cv::imread(image_path, cv::IMREAD_UNCHANGED);
+//    mIndicatorCorner = {
+//            Point2f (0,0),
+//            Point2f (0,mIndicatorImage.rows - 1),
+//            Point2f (mIndicatorImage.rows - 1,mIndicatorImage.cols - 1),
+//            Point2f (mIndicatorImage.cols - 1,0),
+//
+//    };
+//    // black mask
+//    mImageMask = cv::Mat::zeros(mImageSize.height, mImageSize.width, CV_8UC4);
 
     // orb-slam system init
     mpSLAM = new ORB_SLAM2::System(voc_path, settings_path, ORB_SLAM2::System::MONOCULAR);

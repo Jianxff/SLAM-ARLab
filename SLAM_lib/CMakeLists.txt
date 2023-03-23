@@ -87,8 +87,8 @@ else()
             )
 
     target_link_libraries(slam
-            libg2o
-            ${OpenCV_LIBS}
+            g2o
+            OpenCV_Java
             )
 endif()
 

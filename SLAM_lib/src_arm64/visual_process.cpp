@@ -13,14 +13,19 @@ using namespace cv;
  * @return
  */
 int Visual::process(Mat &img, Mat &output) {
-    if(img.channels() == 3) cvtColor(img, output, COLOR_BGR2BGRA);
-    else img.copyTo(output);
+    img.copyTo(output);
 
     // tracking
     chrono::steady_clock::time_point timeStamp = std::chrono::steady_clock::now();
     float diff = chrono::duration_cast<chrono::duration<float> >(timeStamp - mfTimeStamps).count();
+
+    // resize image and change it to gray only
+
+//    float scale_x = mImageSize.width / 300, scale_y = mImageSize.height / 400;
     Mat img_gray;
-    cvtColor(img, img_gray, COLOR_BGRA2GRAY);
+//    cv::resize(img, img, cv::Size(),0.5,0.5);
+
+    cvtColor(img, img_gray, COLOR_BGR2GRAY);
     mTcw = mpSLAM->TrackMonocular(img_gray, diff);
     if(!mTcw.empty()){
         mTwc = mTcw.inv();
@@ -29,13 +34,12 @@ int Visual::process(Mat &img, Mat &output) {
     int status = mpSLAM->GetTrackingState();
 
     Point2f center = Point2f(mImageSize.width / 2, mImageSize.height / 2);
-
     // slam not on, draw black mask
     if(status != 2){
         mPlane.reset();
-        addWeighted(output, 0.3, mImageMask, 0.9, 0, output);
-        // set not transparent
-        putText(output, "move your device", Point(center.x - 165,center.y), FONT_HERSHEY_DUPLEX, 1.2, Scalar(255, 255, 255), 2);
+//        addWeighted(output, 0.3, mImageMask, 0.9, 0, output);
+//        // set not transparent
+        putText(output, "code " + to_string(status), Point(mImageSize.width - 120, 40), FONT_HERSHEY_DUPLEX, 0.8, Scalar(0, 215, 255), 1);
         return -1;
     }
 
@@ -50,6 +54,7 @@ int Visual::process(Mat &img, Mat &output) {
             Mat point_mat = mvpMapPoints[i]->GetWorldPos();
             Point3f mp(point_mat.at<float>(0), point_mat.at<float>(1), point_mat.at<float>(2));
             Point2f kp = mvKeyPoints[i].pt;
+
             // choose points in the center to fit plane
             if(center.x - mChooseRange <= kp.x && kp.x <= center.x + mChooseRange &&
                center.y - mChooseRange <= kp.y && kp.y <= center.y + mChooseRange)
@@ -108,12 +113,16 @@ bool Visual::detect(int iterations, float threshold) {
     float theta = acos(cos_theta) * 180 / CV_PI;
 
     theta = theta > 90 ? 180 - theta : theta;
-    if(mDebug)  logging << "theta: " << theta << endl;
+//    if(mDebug)  cout << "theta: " << theta << endl;
 
     if(theta <= 80){
         plane.copyTo(mPlane);
         mPlane.computeTwp(getVisualCenterWorld(mPlane));  // compute plane to world transform matrix
     }
+
+    Point3f cp = getCameraPosition();
+    Point3f vc = getVisualCenterWorld(mPlane);
+
 
     return mPlane.available();
 }
@@ -123,24 +132,24 @@ bool Visual::detect(int iterations, float threshold) {
  * show plane indicator
  * @param dest
  */
-void Visual::showIndicator(cv::Mat &dest) {
-    if(!mPlane.available()) return;
-
-    Point3f center = getVisualCenterWorld(mPlane);  // get camera line in the plane
-
-    float dist = norm(center - mCameraPosition);
-    const float offset = 0.12 * dist / 1.15;
-    vector<Point2f> pps = {
-            Point2f(-offset,offset),Point2f(-offset,-offset),Point2f(offset,-offset),Point2f(offset,offset)
-    };
-
-    vector<Point2f> ppw;
-    for(int i = 0; i < pps.size(); i++){
-        ppw.push_back(world2image(mPlane.plane2world(pps[i])));
-    }
-
-    Mat transform_mat = getPerspectiveTransform(mIndicatorCorner, ppw);
-    Mat warped(dest.size(), CV_8UC4, Scalar(0, 0, 0, 0));
-    warpPerspective(mIndicatorImage, warped, transform_mat, dest.size());
-    addWeighted(dest, 1.0, warped, 1.0, 0.0, dest);
-}
+//void Visual::showIndicator(cv::Mat &dest) {
+//    if(!mPlane.available()) return;
+//
+//    Point3f center = getVisualCenterWorld(mPlane);  // get camera line in the plane
+//
+//    float dist = norm(center - mCameraPosition);
+//    const float offset = 0.12 * dist / 1.15;
+//    vector<Point2f> pps = {
+//            Point2f(-offset,offset),Point2f(-offset,-offset),Point2f(offset,-offset),Point2f(offset,offset)
+//    };
+//
+//    vector<Point2f> ppw;
+//    for(int i = 0; i < pps.size(); i++){
+//        ppw.push_back(world2image(mPlane.plane2world(pps[i])));
+//    }
+//
+//    Mat transform_mat = getPerspectiveTransform(mIndicatorCorner, ppw);
+//    Mat warped(dest.size(), CV_8UC4, Scalar(0, 0, 0, 0));
+//    warpPerspective(mIndicatorImage, warped, transform_mat, dest.size());
+//    addWeighted(dest, 1.0, warped, 1.0, 0.0, dest);
+//}

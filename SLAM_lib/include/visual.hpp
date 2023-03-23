@@ -15,9 +15,9 @@ class Visual {
 
     // integrated images and params
     cv::Size2d mImageSize;
-    cv::Mat mImageMask;
-    cv::Mat mIndicatorImage;
-    std::vector<cv::Point2f> mIndicatorCorner;
+//    cv::Mat mImageMask;
+//    cv::Mat mIndicatorImage;
+//    std::vector<cv::Point2f> mIndicatorCorner;
 
     // Camera Intrinsic Matrix K
     cv::Mat mKMat;
