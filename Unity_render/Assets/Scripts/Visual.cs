@@ -8,33 +8,35 @@ using Random = System.Random;
 using System;
 
 public class Visual : MonoBehaviour{
-    int width = 600;
-    int height = 800;
+    int width = 480;
+    int height = 640;
    
 
     // camera variables
-    byte[] imageData;
-    byte[] cameraData;
-    Color32[] colorData;
+    byte[]      textureData;
+    byte[]      rawImageData;
+    Color32[]   rawColorData;
+    
     float[] R = new float[9];
     float[] T = new float[3];
     float[] normal = new float[3];
     float[] center = new float[3];
     
     // Camera
-    public WebCamTexture webcamTexture;
-    public RawImage rawImage;
+    public WebCamTexture    webcamTexture;
+    public RawImage         rawImage;
     
     // render variables
-    Texture2D tex;
-    Material mat;
-    public Shader shader;
-    public GameObject test_model;
-    //public GameObject test_plane;
-    public GameObject animate_model;
-    int detected = 20;
-    bool put = false;
-    bool redetect = false;
+    Texture2D   tex;
+    Material    mat;
+    // public Shader shader;
+    public GameObject presetModel;
+    public GameObject animateModel;
+    public GameObject indicator;
+
+    // int detected = 20;
+    bool put_model = false;
+    // bool redetect = false;
     bool cxx_debug = false;
     private Random rd = new Random();
     private int randCount = 0;
@@ -47,7 +49,7 @@ public class Visual : MonoBehaviour{
     [DllImport("liblocator.so")]
     private static extern void set_debug(bool debug);
     [DllImport("liblocator.so")]
-    private static extern int process(byte[] img, float[] R, float[] T, bool show_indicator);
+    private static extern int process(byte[] img,byte[] dst, float[] R, float[] T);
     [DllImport("liblocator.so")]
     private static extern bool detect(float[] normal, float[] center);
     [DllImport("liblocator.so")]
@@ -57,33 +59,33 @@ public class Visual : MonoBehaviour{
 
  
     [DllImport("libcvTools.so")]
-    private static extern void rotate(byte[] img,int w,int h, int angle,byte[] dst);
+    private static extern void rotate(byte[] img,int channel,int w,int h, int angle,byte[] dst);
     [DllImport("libcvTools.so")]
-    private static extern void flip(byte[] img,int w,int h, int fcode, byte[] dst);
+    private static extern void flip(byte[] img,int channel,int w,int h, int fcode, byte[] dst);
     [DllImport("libcvTools.so")]
-    private static extern void transpose(byte[] img,int w,int h, byte[] dst);
+    private static extern void transpose(byte[] img,int channel,int w,int h, byte[] dst);
 
-    [ImageEffectOpaque]
-    void OnRenderImage(RenderTexture src, RenderTexture dest)
-    {
-        if(shader != null){
-            material.SetTexture("tex",tex);
-            Graphics.Blit(src, dest,material);
-        }else{
-            Graphics.Blit(src, dest);
-        }
-    }
+    // [ImageEffectOpaque]
+    // void OnRenderImage(RenderTexture src, RenderTexture dest)
+    // {
+    //     if(shader != null){
+    //         material.SetTexture("tex",tex);
+    //         Graphics.Blit(src, dest,material);
+    //     }else{
+    //         Graphics.Blit(src, dest);
+    //     }
+    // }
 
 
-    public Material material{
-        get{
-            if (mat == null){
-                mat = new Material(shader);
-                mat.hideFlags = HideFlags.HideAndDontSave;
-            }
-            return mat;
-        }
-    }
+    // public Material material{
+    //     get{
+    //         if (mat == null){
+    //             mat = new Material(shader);
+    //             mat.hideFlags = HideFlags.HideAndDontSave;
+    //         }
+    //         return mat;
+    //     }
+    // }
 
     void Color32ToByte(Color32[] color,byte[] image){
         GCHandle handle = default(GCHandle);
@@ -100,51 +102,61 @@ public class Visual : MonoBehaviour{
         // init
         init(width,height);
 
-        cameraData = new byte[width*height*4];
-        imageData = new byte[width*height*4];
-        colorData = new Color32[width*height];
-        tex = new Texture2D(width,height,TextureFormat.RGBA32,false);
+        rawColorData = new Color32[width*height];
+        rawImageData = new byte[width*height*4];
+        textureData = new byte[width*height*3];
 
-        test_model.SetActive(false);
-        //test_plane.SetActive(false);
+        tex = new Texture2D(width,height,TextureFormat.RGB24,false);
+
+        presetModel.SetActive(false);
 
         Camera.main.depthTextureMode = DepthTextureMode.Depth;
         webcamTexture = new WebCamTexture(height,width,30); // should be flip
         webcamTexture.Play();
 
-        if(shader != null && shader.isSupported == false){
-            enabled = false;
-        }
+        // if(shader != null && shader.isSupported == false){
+        //     enabled = false;
+        // }
+        Debug.Log("start");
         
     }
 
     void Update(){
           
         // get image
-        colorData = webcamTexture.GetPixels32();
-        Color32ToByte(colorData, cameraData);
-        transpose(cameraData,height,width,imageData);
+        rawColorData = webcamTexture.GetPixels32();
+        Color32ToByte(rawColorData, rawImageData);
+        transpose(rawImageData,4,height,width,rawImageData);
+        // rotate(rawImageData,4,width,height,90,rawImageData);
 
-        int process_res = process(imageData,R,T,true);
-        flip(imageData,width,height,0,cameraData);
+        int process_res = process(rawImageData,textureData,R,T);
+        flip(textureData,3,width,height,0,textureData);
 
-        tex.LoadRawTextureData(cameraData);
+        tex.LoadRawTextureData(textureData);
         tex.Apply();
         rawImage.texture = tex;
 
+
         if(process_res != 0){
             Debug.Log("slam lost");
-            test_model.SetActive(false);
-            //test_plane.SetActive(false);
-            detected = 20;
-            put = false;
+            presetModel.SetActive(false);
+            indicator.transform.position = new Vector3(0,0,1);
+            indicator.transform.rotation = Quaternion.LookRotation(new Vector3(0,0,1));
+            indicator.SetActive(false);
+            //detected = 20;
+            put_model = false;
         }else{
-            if(detected > 0){
-                Debug.Log("detecting...");
-                bool detect_res = detect(normal,center);
-                if(detect_res == true){
-                    detected--;
+            if(detect(normal,center) == true){
+                Vector3 p_normal = new Vector3(normal[0],-normal[1],normal[2]);
+                Vector3 p_center = new Vector3(center[0],-center[1],center[2]);
+                indicator.transform.position = p_center;
+                indicator.transform.eulerAngles = Quaternion.FromToRotation(new Vector3(0,0,1), p_normal).eulerAngles;
+                indicator.SetActive(true);
+                if(put_model == true){
+                    SetModel(p_normal,p_center);
+                    put_model = false;
                 }
+            
             }
         }
 
@@ -159,38 +171,54 @@ public class Visual : MonoBehaviour{
         Camera.main.transform.position = new Vector3(T[0], -T[1], T[2]);
         Camera.main.transform.rotation = Quaternion.LookRotation(new Vector3(R[2], -R[5], R[8]), - new Vector3(R[1], -R[4], R[7]));
 
-        if(redetect == true){
-            Debug.Log("re-detecting...");
-            detected = 20;
-            redetect = false;
-        }
+        
+        // if(redetect == true){
+        //     Debug.Log("re-detecting...");
+        //     detected = 20;
+        //     redetect = false;
+        // }
 
-        if(detected == 0){
-            Debug.Log("detected!");
-            normal[1] = - normal[1];
-            if(normal[1] < 0){
-                normal[1] = -normal[1];
-                normal[0] = -normal[0];
-                normal[2] = -normal[2];
-            }
-            Vector3 p_normal = new Vector3(normal[0],normal[1],normal[2]);
+        // if(detected == 0){
+        //     Debug.Log("detected!");
+        //     // normal[1] = - normal[1];
+        //     // if(normal[1] < 0){
+        //     //     normal[1] = -normal[1];
+        //     //     normal[0] = -normal[0];
+        //     //     normal[2] = -normal[2];
+        //     // }
+        //     Vector3 p_normal = new Vector3(normal[0],normal[1],normal[2]);
 
-            //test_plane.transform.position = new Vector3(center[0],-center[1],center[2]);
-            //test_plane.transform.eulerAngles = Quaternion.FromToRotation(new Vector3(0,1,0), p_normal).eulerAngles;
-            test_model.transform.position = new Vector3(center[0],-center[1],center[2]);
+        //     //test_plane.transform.position = new Vector3(center[0],-center[1],center[2]);
+        //     //test_plane.transform.eulerAngles = Quaternion.FromToRotation(new Vector3(0,1,0), p_normal).eulerAngles;
+        //     presetModel.transform.position = new Vector3(center[0],-center[1],center[2]);
 
-            // look to camera
-            Vector3 cam_model = Camera.main.transform.position - test_model.transform.position;
-            float dist = Vector3.Cross(cam_model,p_normal).magnitude / p_normal.magnitude;
-            float t = (float) Math.Sqrt(cam_model.magnitude * cam_model.magnitude - dist * dist);
-            Vector3 p_normal_ext = p_normal.normalized * t;
-            Vector3 look = cam_model - p_normal_ext;
-            test_model.transform.rotation = Quaternion.LookRotation(look, p_normal);
+        //     // look to camera
+        //     Vector3 cam_model_vec = Camera.main.transform.position - presetModel.transform.position;
+        //     float dist = Vector3.Cross(cam_model_vec,p_normal).magnitude / p_normal.magnitude;
+        //     float t = (float) Math.Sqrt(cam_model_vec.magnitude * cam_model_vec.magnitude - dist * dist);
+        //     Vector3 p_normal_ext = p_normal.normalized * t;
+        //     Vector3 look = cam_model_vec - p_normal_ext;
+        //     presetModel.transform.rotation = Quaternion.LookRotation(look, p_normal);
 
-            test_model.SetActive(true);
-            //test_plane.SetActive(true);
-            detected = -1;
-        }
+        //     presetModel.SetActive(true);
+        //     //test_plane.SetActive(true);
+        //     detected = -1;
+        // }
+    }
+
+    private void SetModel(Vector3 normal, Vector3 center){
+        presetModel.transform.position = center;
+
+        // look to camera
+        Vector3 cam_model_vec = Camera.main.transform.position - center;
+        float dist = Vector3.Cross(cam_model_vec,normal).magnitude / normal.magnitude;
+        float t = (float) Math.Sqrt(cam_model_vec.magnitude * cam_model_vec.magnitude - dist * dist);
+        Vector3 p_normal_ext = normal.normalized * t;
+        Vector3 look = cam_model_vec - p_normal_ext;
+        presetModel.transform.rotation = Quaternion.LookRotation(look, normal);
+
+        presetModel.SetActive(true);
+
     }
 
     private List<string> animationList = new List<string>{
@@ -200,7 +228,7 @@ public class Visual : MonoBehaviour{
     
 
     public void ChangeAnimation(){
-        Animator animator = animate_model.GetComponent<Animator>();
+        Animator animator = animateModel.GetComponent<Animator>();
         if(animator != null){
             int index = rd.Next(0,animationList.Count);
             animator.Play(animationList[index]);
@@ -209,17 +237,17 @@ public class Visual : MonoBehaviour{
 
     public void ChangeScale(bool up){
         if(up == false){
-            if(test_model.transform.localScale.x <= 0.1f){
-                test_model.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
+            if(presetModel.transform.localScale.x <= 0.1f){
+                presetModel.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
             }else{
-                test_model.transform.localScale -= new Vector3(0.1f,0.1f,0.1f);
+                presetModel.transform.localScale -= new Vector3(0.05f,0.05f,0.05f);
             }
             
         }else{
-            if(test_model.transform.localScale.x >= 5.0f){
-                test_model.transform.localScale = new Vector3(5.0f,5.0f,5.0f);
+            if(presetModel.transform.localScale.x >= 5.0f){
+                presetModel.transform.localScale = new Vector3(5.0f,5.0f,5.0f);
             }else{
-                test_model.transform.localScale += new Vector3(0.1f,0.1f,0.1f);
+                presetModel.transform.localScale += new Vector3(0.05f,0.05f,0.05f);
             }
         }
     }
@@ -239,7 +267,8 @@ public class Visual : MonoBehaviour{
             draw_tetra((float)0.4);
         }
         if(GUI.Button(new Rect(30,250,300,350),"PUT",fontStyle)){
-            redetect = true;
+            // redetect = true;
+            put_model = true;
         }
         if(GUI.Button(new Rect(30,370,300,470),"CHANGE",fontStyle)){
             ChangeAnimation();
