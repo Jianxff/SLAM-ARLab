@@ -385,8 +385,6 @@ struct Action_2_t96795EA3C89E06F9B479144D4AEBDFA5FE40A1D1;
 struct Action_2_t156C43F079E7E68155FCDCD12DC77DD11AEF7E3C;
 // System.Action`2<System.Object,UnityEngine.UIElements.Experimental.StyleValues>
 struct Action_2_tEF4CAC459102D1FC2B4C3B21CA90E86B3EE4C207;
-// System.Action`2<UnityEngine.PhysicsScene,Unity.Collections.NativeArray`1<UnityEngine.ModifiableContactPair>>
-struct Action_2_t70E17A6F8F03189031C560482454FE2D87F496F2;
 // System.Action`2<System.UInt64,System.Object>
 struct Action_2_t3D17A1D20C72B9CE9271D2EA0C45406C0053F77F;
 // System.Action`3<System.Boolean,System.Boolean,System.Int32>
@@ -1836,17 +1834,6 @@ struct NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF
 	int32_t ___m_AllocatorLabel_2;
 };
 
-// Unity.Collections.NativeArray`1<UnityEngine.ModifiableContactPair>
-struct NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259 
-{
-	// System.Void* Unity.Collections.NativeArray`1::m_Buffer
-	void* ___m_Buffer_0;
-	// System.Int32 Unity.Collections.NativeArray`1::m_Length
-	int32_t ___m_Length_1;
-	// Unity.Collections.Allocator Unity.Collections.NativeArray`1::m_AllocatorLabel
-	int32_t ___m_AllocatorLabel_2;
-};
-
 // Unity.Collections.NativeArray`1<System.UInt16>
 struct NativeArray_1_t275C00CC374DEA66C69B3BB3992116F315A8E934 
 {
@@ -2579,13 +2566,6 @@ struct Matrix4x4_tDB70CF134A14BA38190C59AA700BCE10E2AED3E6
 	float ___m33_15;
 };
 
-// UnityEngine.PhysicsScene
-struct PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE 
-{
-	// System.Int32 UnityEngine.PhysicsScene::m_Handle
-	int32_t ___m_Handle_0;
-};
-
 // UnityEngine.PropertyName
 struct PropertyName_tE4B4AAA58AF3BF2C0CD95509EB7B786F096901C2 
 {
@@ -3275,31 +3255,6 @@ struct LightDataGI_t47D2197E863C0DDA40C2182FBF0A21367E468E21
 	uint8_t ___falloff_15;
 };
 
-// UnityEngine.ModifiableContactPair
-struct ModifiableContactPair_t8D3CA3E20AF1718A5421A6098D633DDA67399960 
-{
-	// System.IntPtr UnityEngine.ModifiableContactPair::actor
-	intptr_t ___actor_0;
-	// System.IntPtr UnityEngine.ModifiableContactPair::otherActor
-	intptr_t ___otherActor_1;
-	// System.IntPtr UnityEngine.ModifiableContactPair::shape
-	intptr_t ___shape_2;
-	// System.IntPtr UnityEngine.ModifiableContactPair::otherShape
-	intptr_t ___otherShape_3;
-	// UnityEngine.Quaternion UnityEngine.ModifiableContactPair::rotation
-	Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___rotation_4;
-	// UnityEngine.Vector3 UnityEngine.ModifiableContactPair::position
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___position_5;
-	// UnityEngine.Quaternion UnityEngine.ModifiableContactPair::otherRotation
-	Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___otherRotation_6;
-	// UnityEngine.Vector3 UnityEngine.ModifiableContactPair::otherPosition
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___otherPosition_7;
-	// System.Int32 UnityEngine.ModifiableContactPair::numContacts
-	int32_t ___numContacts_8;
-	// System.IntPtr UnityEngine.ModifiableContactPair::contacts
-	intptr_t ___contacts_9;
-};
-
 // UnityEngine.Plane
 struct Plane_tB7D8CC6F7AACF5F3AA483AF005C1102A8577BC0C 
 {
@@ -3685,15 +3640,6 @@ struct AlignOfHelper_1_tC14085A002766BE215E2A570FCDA1F263125AA18
 	LightDataGI_t47D2197E863C0DDA40C2182FBF0A21367E468E21 ___data_1;
 };
 
-// Unity.Collections.LowLevel.Unsafe.UnsafeUtility/AlignOfHelper`1<UnityEngine.ModifiableContactPair>
-struct AlignOfHelper_1_tD67A48EC63F59A3B0822645B10F6057BB0B1A6FB 
-{
-	// System.Byte Unity.Collections.LowLevel.Unsafe.UnsafeUtility/AlignOfHelper`1::dummy
-	uint8_t ___dummy_0;
-	// T Unity.Collections.LowLevel.Unsafe.UnsafeUtility/AlignOfHelper`1::data
-	ModifiableContactPair_t8D3CA3E20AF1718A5421A6098D633DDA67399960 ___data_1;
-};
-
 // Unity.Collections.LowLevel.Unsafe.UnsafeUtility/AlignOfHelper`1<UnityEngine.Plane>
 struct AlignOfHelper_1_t0A0F0444D297D1B268776F65B34B921CC7440328 
 {
@@ -4011,11 +3957,6 @@ struct Action_2_t156C43F079E7E68155FCDCD12DC77DD11AEF7E3C  : public MulticastDel
 
 // System.Action`2<System.Object,UnityEngine.UIElements.Experimental.StyleValues>
 struct Action_2_tEF4CAC459102D1FC2B4C3B21CA90E86B3EE4C207  : public MulticastDelegate_t
-{
-};
-
-// System.Action`2<UnityEngine.PhysicsScene,Unity.Collections.NativeArray`1<UnityEngine.ModifiableContactPair>>
-struct Action_2_t70E17A6F8F03189031C560482454FE2D87F496F2  : public MulticastDelegate_t
 {
 };
 
@@ -4683,10 +4624,6 @@ struct EmptyData_tED1BB22234DD4A2FBA90416759D025535300EDCB_StaticFields
 
 // System.Collections.Generic.KeyValuePair`2<System.Object,System.Object>
 
-// Unity.Collections.NativeArray`1<UnityEngine.ModifiableContactPair>
-
-// Unity.Collections.NativeArray`1<UnityEngine.ModifiableContactPair>
-
 // Unity.Collections.NativeArray`1<System.UInt16>
 
 // Unity.Collections.NativeArray`1<System.UInt16>
@@ -4867,10 +4804,6 @@ struct IntPtr_t_StaticFields
 
 // UnityEngine.UIElements.StyleSheets.MatchResultInfo
 
-// UnityEngine.PhysicsScene
-
-// UnityEngine.PhysicsScene
-
 // UnityEngine.UIElements.RuleMatcher
 
 // UnityEngine.UIElements.RuleMatcher
@@ -5029,10 +4962,6 @@ struct Exception_t_StaticFields
 
 // Unity.Collections.LowLevel.Unsafe.UnsafeUtility/AlignOfHelper`1<UnityEngine.Experimental.GlobalIllumination.LightDataGI>
 
-// Unity.Collections.LowLevel.Unsafe.UnsafeUtility/AlignOfHelper`1<UnityEngine.ModifiableContactPair>
-
-// Unity.Collections.LowLevel.Unsafe.UnsafeUtility/AlignOfHelper`1<UnityEngine.ModifiableContactPair>
-
 // Unity.Collections.LowLevel.Unsafe.UnsafeUtility/AlignOfHelper`1<UnityEngine.Plane>
 
 // Unity.Collections.LowLevel.Unsafe.UnsafeUtility/AlignOfHelper`1<UnityEngine.Plane>
@@ -5161,10 +5090,6 @@ struct VisualElement_t2667F9D19E62C7A315927506C06F223AB9234115_StaticFields
 // System.Action`2<System.Object,UnityEngine.UIElements.Experimental.StyleValues>
 
 // System.Action`2<System.Object,UnityEngine.UIElements.Experimental.StyleValues>
-
-// System.Action`2<UnityEngine.PhysicsScene,Unity.Collections.NativeArray`1<UnityEngine.ModifiableContactPair>>
-
-// System.Action`2<UnityEngine.PhysicsScene,Unity.Collections.NativeArray`1<UnityEngine.ModifiableContactPair>>
 
 // System.Action`2<System.UInt64,System.Object>
 
@@ -12588,84 +12513,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Action_2_Invoke_m6F16669D2D84F15B2F69F0F
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-void Action_2_Invoke_m7EA811A13BB45D59926C636C90CFD2FCE6D89B3B_Multicast(Action_2_t70E17A6F8F03189031C560482454FE2D87F496F2* __this, PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE ___0_arg1, NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259 ___1_arg2, const RuntimeMethod* method)
-{
-	il2cpp_array_size_t length = __this->___delegates_13->max_length;
-	Delegate_t** delegatesToInvoke = reinterpret_cast<Delegate_t**>(__this->___delegates_13->GetAddressAtUnchecked(0));
-	for (il2cpp_array_size_t i = 0; i < length; i++)
-	{
-		Action_2_t70E17A6F8F03189031C560482454FE2D87F496F2* currentDelegate = reinterpret_cast<Action_2_t70E17A6F8F03189031C560482454FE2D87F496F2*>(delegatesToInvoke[i]);
-		typedef void (*FunctionPointerType) (RuntimeObject*, PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE, NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259, const RuntimeMethod*);
-		((FunctionPointerType)currentDelegate->___invoke_impl_1)((Il2CppObject*)currentDelegate->___method_code_6, ___0_arg1, ___1_arg2, reinterpret_cast<RuntimeMethod*>(currentDelegate->___method_3));
-	}
-}
-void Action_2_Invoke_m7EA811A13BB45D59926C636C90CFD2FCE6D89B3B_OpenInst(Action_2_t70E17A6F8F03189031C560482454FE2D87F496F2* __this, PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE ___0_arg1, NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259 ___1_arg2, const RuntimeMethod* method)
-{
-	typedef void (*FunctionPointerType) (PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE, NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259, const RuntimeMethod*);
-	((FunctionPointerType)__this->___method_ptr_0)(___0_arg1, ___1_arg2, method);
-}
-void Action_2_Invoke_m7EA811A13BB45D59926C636C90CFD2FCE6D89B3B_OpenStatic(Action_2_t70E17A6F8F03189031C560482454FE2D87F496F2* __this, PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE ___0_arg1, NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259 ___1_arg2, const RuntimeMethod* method)
-{
-	typedef void (*FunctionPointerType) (PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE, NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259, const RuntimeMethod*);
-	((FunctionPointerType)__this->___method_ptr_0)(___0_arg1, ___1_arg2, method);
-}
-void Action_2_Invoke_m7EA811A13BB45D59926C636C90CFD2FCE6D89B3B_OpenStaticInvoker(Action_2_t70E17A6F8F03189031C560482454FE2D87F496F2* __this, PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE ___0_arg1, NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259 ___1_arg2, const RuntimeMethod* method)
-{
-	InvokerActionInvoker2< PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE, NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259 >::Invoke(__this->___method_ptr_0, method, NULL, ___0_arg1, ___1_arg2);
-}
-void Action_2_Invoke_m7EA811A13BB45D59926C636C90CFD2FCE6D89B3B_ClosedStaticInvoker(Action_2_t70E17A6F8F03189031C560482454FE2D87F496F2* __this, PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE ___0_arg1, NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259 ___1_arg2, const RuntimeMethod* method)
-{
-	InvokerActionInvoker3< RuntimeObject*, PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE, NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259 >::Invoke(__this->___method_ptr_0, method, NULL, __this->___m_target_2, ___0_arg1, ___1_arg2);
-}
-// System.Void System.Action`2<UnityEngine.PhysicsScene,Unity.Collections.NativeArray`1<UnityEngine.ModifiableContactPair>>::.ctor(System.Object,System.IntPtr)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Action_2__ctor_mBD0F919ECE3004F6860F5575440572621853016E_gshared (Action_2_t70E17A6F8F03189031C560482454FE2D87F496F2* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method) 
-{
-	__this->___method_ptr_0 = il2cpp_codegen_get_virtual_call_method_pointer((RuntimeMethod*)___1_method);
-	__this->___method_3 = ___1_method;
-	__this->___m_target_2 = ___0_object;
-	Il2CppCodeGenWriteBarrier((void**)(&__this->___m_target_2), (void*)___0_object);
-	int parameterCount = il2cpp_codegen_method_parameter_count((RuntimeMethod*)___1_method);
-	__this->___method_code_6 = (intptr_t)__this;
-	if (MethodIsStatic((RuntimeMethod*)___1_method))
-	{
-		bool isOpen = parameterCount == 2;
-		if (il2cpp_codegen_call_method_via_invoker((RuntimeMethod*)___1_method))
-			if (isOpen)
-				__this->___invoke_impl_1 = (intptr_t)&Action_2_Invoke_m7EA811A13BB45D59926C636C90CFD2FCE6D89B3B_OpenStaticInvoker;
-			else
-				__this->___invoke_impl_1 = (intptr_t)&Action_2_Invoke_m7EA811A13BB45D59926C636C90CFD2FCE6D89B3B_ClosedStaticInvoker;
-		else
-			if (isOpen)
-				__this->___invoke_impl_1 = (intptr_t)&Action_2_Invoke_m7EA811A13BB45D59926C636C90CFD2FCE6D89B3B_OpenStatic;
-			else
-				{
-					__this->___invoke_impl_1 = (intptr_t)__this->___method_ptr_0;
-					__this->___method_code_6 = (intptr_t)__this->___m_target_2;
-				}
-	}
-	else
-	{
-		if (___0_object == NULL)
-			il2cpp_codegen_raise_exception(il2cpp_codegen_get_argument_exception(NULL, "Delegate to an instance method cannot have null 'this'."), NULL);
-		__this->___invoke_impl_1 = (intptr_t)__this->___method_ptr_0;
-		__this->___method_code_6 = (intptr_t)__this->___m_target_2;
-	}
-	__this->___extra_arg_5 = (intptr_t)&Action_2_Invoke_m7EA811A13BB45D59926C636C90CFD2FCE6D89B3B_Multicast;
-}
-// System.Void System.Action`2<UnityEngine.PhysicsScene,Unity.Collections.NativeArray`1<UnityEngine.ModifiableContactPair>>::Invoke(T1,T2)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Action_2_Invoke_m7EA811A13BB45D59926C636C90CFD2FCE6D89B3B_gshared (Action_2_t70E17A6F8F03189031C560482454FE2D87F496F2* __this, PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE ___0_arg1, NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259 ___1_arg2, const RuntimeMethod* method) 
-{
-	typedef void (*FunctionPointerType) (RuntimeObject*, PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE, NativeArray_1_tA04FF6E7BE3D24B3E6351C63BF7229421DFE1259, const RuntimeMethod*);
-	((FunctionPointerType)__this->___invoke_impl_1)((Il2CppObject*)__this->___method_code_6, ___0_arg1, ___1_arg2, reinterpret_cast<RuntimeMethod*>(__this->___method_3));
-}
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
 void Action_2_Invoke_m17293114E163149D76DCF52875652BA7542B3017_Multicast(Action_2_t3D17A1D20C72B9CE9271D2EA0C45406C0053F77F* __this, uint64_t ___0_arg1, RuntimeObject* ___1_arg2, const RuntimeMethod* method)
 {
 	il2cpp_array_size_t length = __this->___delegates_13->max_length;
@@ -13060,14 +12907,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Action_3_Invoke_m399A0EB5E51EFD9B7D25DFE
 	typedef void (*FunctionPointerType) (RuntimeObject*, RuntimeObject*, RuntimeObject*, RuntimeObject*, const RuntimeMethod*);
 	((FunctionPointerType)__this->___invoke_impl_1)((Il2CppObject*)__this->___method_code_6, ___0_arg1, ___1_arg2, ___2_arg3, reinterpret_cast<RuntimeMethod*>(__this->___method_3));
 }
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif

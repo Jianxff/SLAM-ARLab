@@ -47,12 +47,12 @@
 
 - **[NOTICE]** When first installing the app, you need to copy the `Config` folder to the `/storage/emulated/0/Android/data/com.labx.arlab/files/` directory so that the app can find config files. The zipped file of `Config` folder is in the `Assets` directory of the repo and also at the `release` page.
 
-- **[IMPORTANT]** To make your AR model more accurate, you'd better calibrate your camera and set calibtation parameters in the 'Config/ORB.yaml' file. Pay attention that the camera is opened as `600*800`, and the scene is set fitting the height of your device. So the `Camera.fx` and `Camera.fy` are better set to `${YOUR_SCREEN_HEIGHT}/4*3`.
+- **[IMPORTANT]** To make your AR model more accurate, you'd better calibrate your camera and set calibtation parameters in the 'Config/ORB.yaml' file. Pay attention that the camera is opened as `480*640`, and the scene is set fitting the width of your device. So the `Camera.fx` and `Camera.fy` are better set base on testing your own devices. As a reference, the `Camera.fx` and `Camera.fy` of device with height of `1080` are all set to `1320`.
 
 ## On Working
 - [ ] **MORE** interactive operations
 - [ ] **MORE** beautiful user-interface
-- [ ] **IMPROVE** the tracking effect of SLAM system
+- [x] **IMPROVE** the tracking effect of SLAM system
 - [x] **IMPROVE** the accuracy of plane detected on SLAM system
 - [ ] **IMPORT** `Yolo` to solve the problem of *dynamic* objects and *covered* objects
 - [x] **EXPORT** and build application for `Android` devices
