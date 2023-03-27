@@ -42,11 +42,11 @@ Built shared library `locator` with **`ORB-SLAM2`**
 
 ## Notice
 > when building on arm64, you may need to add the following properties to your compiler
-> -DCMAKE_TOOLCHAIN_FILE=${NDK_CMAKE_PATH}/android.toolchain.cmake
+> -DCMAKE_TOOLCHAIN_FILE=\${NDK_CMAKE_PATH}/android.toolchain.cmake
 > -DCMAKE_SYSTEM_NAME=Android
 > -DANDROID_ABI=arm64-v8a
-> -DCMAKE_ANDROID_NDK=${NDK_PATH}
+> -DCMAKE_ANDROID_NDK=\${NDK_PATH}
 > -DCMAKE_SYSTEM_VERSION=24
 > -DCMAKE_ANDROID_NDK_TOOLCHAIN_VERSION=clang
 > -DCMAKE_CXX_STANDARD=14
-> -DCMAKE_MAKE_PROGRAM=${NDK_MAKE_PROGRAM_PATH}
+> -DCMAKE_MAKE_PROGRAM=\${NDK_MAKE_PROGRAM_PATH}
