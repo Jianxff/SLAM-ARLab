@@ -1,7 +1,8 @@
 # ARLab
 ### an AR Experimental Application based on SLAM and Unity3D
 ![system](https://badgen.net/badge/Application/Augmented%20Reality/blue)
-![env](https://badgen.net/badge/Environment/x64%2Farm64/green)
+![env](https://badgen.net/badge/Arm64/working/green)
+![env](https://badgen.net/badge/X64/stall/gray/)
 ![slam](https://badgen.net/badge/Locator/SLAM/orange)
 ![unity](https://badgen.net/badge/Render/Unity/orange)
 
@@ -49,12 +50,19 @@
 
 - **[IMPORTANT]** To make your AR model more accurate, you'd better calibrate your camera and set calibtation parameters in the 'Config/ORB.yaml' file. Pay attention that the camera is opened as `480*640`, and the scene is set fitting the width of your device. So the `Camera.fx` and `Camera.fy` are better set base on testing your own devices. As a reference, the `Camera.fx` and `Camera.fy` of device with height of `1080` are all set to `1320`.
 
+## YOLOv5
+- `YoloV5` are now integrated into the project (arm64) to solve the problem of *dynamic-objects* and `coverd-objects`. Now the system is able to delete the key points which are in the bounding box of the detected dynamic objects. However, the system is just simply classify the *dynamic-objects* with a high percentage in daily life, such as `persons` ,`animals`, etc. Yolo is not able to really detected dynamic objects.
+- The `YoloV5`, using the *offical model*, is based on `NCNN` by `tencent`, which is aimed at improving the speed of image processing. The system running on `Google Pixel 5` (with Qualcomm Snapdragon 765G) get above *15* fps.
+- This is a snap shot to show the result of *dynamic-objects points* exception. **The right picture is using yolo while the left not.**
+  ![dyna-cmp](Assets/dyna-cmp.jpg)
+
 ## On Working
-- [ ] **MORE** interactive operations
+- [x] **MORE** interactive operations
 - [ ] **MORE** beautiful user-interface
 - [x] **IMPROVE** the tracking effect of SLAM system
 - [x] **IMPROVE** the accuracy of plane detected on SLAM system
-- [ ] **IMPORT** `Yolo` to solve the problem of *dynamic* objects and *covered* objects
+- [x] **IMPORT** `Yolo` to solve the problem of *dynamic* objects 
+- [ ] **USING** `Yolo` to solve the problem of *covered* objects
 - [x] **EXPORT** and build application for `Android` devices
 
 ## Contact

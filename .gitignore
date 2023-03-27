@@ -1,5 +1,4 @@
-SLAM_lib/cmake-build-release-visual-studio
-SLAM_lib/cmake-build-release-androidndk
+SLAM_lib/cmake-build*
 SLAM_lib/test
 SLAM_lib/.idea
 SLAM_lib/.vscode
@@ -29,6 +28,11 @@ Project_android/unityLibrary/build
 Project_android/unityLibrary/symbols
 Project_android/build
 Project_android/.git
+
+YoloV5_lib/.idea
+YoloV5_lib/.vscode
+YoloV5_lib/.git
+YoloV5_lib/cmake-build*
 
 Assets/Models
 
