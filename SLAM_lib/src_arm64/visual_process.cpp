@@ -12,7 +12,7 @@ using namespace cv;
  * @param output output image
  * @return
  */
-int Visual::process(Mat &img, Mat &output) {
+int Visual::process(Mat &img, Mat &output, const vector<Rect2f>& exceptArea) {
     img.copyTo(output);
 
     // tracking
@@ -26,7 +26,7 @@ int Visual::process(Mat &img, Mat &output) {
 //    cv::resize(img, img, cv::Size(),0.5,0.5);
 
     cvtColor(img, img_gray, COLOR_BGR2GRAY);
-    mTcw = mpSLAM->TrackMonocular(img_gray, diff);
+    mTcw = mpSLAM->TrackMonocular(img_gray, diff, exceptArea);
     if(!mTcw.empty()){
         mTwc = mTcw.inv();
         mCameraPosition = Point3f(mTwc.at<float>(0,3), mTwc.at<float>(1,3), mTwc.at<float>(2,3));
@@ -69,16 +69,16 @@ int Visual::process(Mat &img, Mat &output) {
     }
 
     // put origin world point
-    if(mDebug){
-        Point3f offset = Point3f(0,0,0);
-        Point2f po = world2image(Point3f(0,0,0) + offset);
-        Point2f px = world2image(Point3f(0.1,0,0) + offset);
-        Point2f py = world2image(Point3f(0,0.1,0) + offset);
-        Point2f pz = world2image(Point3f(0,0,0.1) + offset);
-        cv::line(output, po, px, cv::Scalar(0, 0, 255),2);
-        cv::line(output, po, py, cv::Scalar(0, 255, 0) ,2);
-        cv::line(output, po, pz, cv::Scalar(255, 0, 0) ,2);
-    }
+//    if(mDebug){
+//        Point3f offset = Point3f(0,0,0);
+//        Point2f po = world2image(Point3f(0,0,0) + offset);
+//        Point2f px = world2image(Point3f(0.1,0,0) + offset);
+//        Point2f py = world2image(Point3f(0,0.1,0) + offset);
+//        Point2f pz = world2image(Point3f(0,0,0.1) + offset);
+//        cv::line(output, po, px, cv::Scalar(0, 0, 255),2);
+//        cv::line(output, po, py, cv::Scalar(0, 255, 0) ,2);
+//        cv::line(output, po, pz, cv::Scalar(255, 0, 0) ,2);
+//    }
 
     return 0;
 }

@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
 project(ARLab)
 set(CMAKE_CXX_STANDARD 14)
+set(YOLO_V5 ON)
 
 
 
@@ -35,6 +36,23 @@ elseif(TARGET_TYPE STREQUAL "arm64")
 
     set(OpenCV_INCLUDE_DIRS D:/.env/opencv4.6-android/OpenCV-android-sdk/sdk/native/jni/include)
     include_directories( ${OpenCV_INCLUDE_DIRS})
+
+
+    if(YOLO_V5)
+        # ncnn
+        message("Linking YoloV5")
+        include_directories("D:/.env/ncnn-20230223-android-vulkan-shared/arm64-v8a/include/ncnn")
+        add_library(ncnn SHARED IMPORTED)
+        set_target_properties(ncnn PROPERTIES IMPORTED_LOCATION
+                D:/.env/ncnn-20230223-android-vulkan-shared/arm64-v8a/lib/libncnn.so)
+        set_target_properties(ncnn PROPERTIES IMPORTED_IMPLIB
+                D:/.env/ncnn-20230223-android-vulkan-shared/arm64-v8a/lib/libncnn.so)
+
+        add_library(yolov5 SHARED IMPORTED)
+        set_target_properties(yolov5 PROPERTIES IMPORTED_LOCATION ${LIBS_DIR}/libyolov5.so)
+        set_target_properties(yolov5 PROPERTIES IMPORTED_IMPLIB ${LIBS_DIR}/libyolov5.so)
+
+    endif()
 else()
     message("Unknown target type")
 endif()
@@ -119,6 +137,8 @@ elseif(TARGET_TYPE STREQUAL "arm64")
             OpenCV_Java
             slam
             g2o
+            yolov5
+            ncnn
             )
 endif()
 

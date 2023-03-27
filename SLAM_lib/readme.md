@@ -6,15 +6,18 @@ Built shared library `locator` with **`ORB-SLAM2`**
 ## Environment
 - Windows 11
 - Android Studio 2022.1.1
-- Visual Studio 2019
+- CLion 2022.3.3
 - Android NDK 21.3.6528147
 - OpenCV 4.6
 
 ## Schedule
 #### Onworking
-- [x] improve the tracking effect on ORB-SLAM2 with more track points
 - [ ] improve plane detector with more accuracy
-- [ ] filter tracking points on dynamic objects using `yolov5`
+- [ ] using `yolov5` to judge whether the model is covered
+
+#### 2023.3.27
+- [x] integrated `yolov5` into `ORB-SLAM2` for filtering tracking points on dynamic objects
+- [x] fix bugs on `ORB-SLAM2` and improve the tracking effect on ORB-SLAM2 with more track points
 
 #### 2023.3.23
 - [x] redirect the standard output to `log.txt`

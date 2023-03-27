@@ -21,6 +21,10 @@ void Visual::setDebug(bool d) {
     mDebug = d;
 }
 
+bool Visual::debug() {
+    return mDebug;
+}
+
 void Visual::init(string path, Size sz) {
     mImageSize = sz;
     if(sz.width == 0 || sz.height == 0) {

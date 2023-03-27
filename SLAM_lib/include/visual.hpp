@@ -51,7 +51,7 @@ public:
     void init(std::string path, cv::Size imageSize = cv::Size(0,0));
 
     // tracking points and process image
-    int process(cv::Mat &img, cv::Mat &output);
+    int process(cv::Mat &img, cv::Mat &output,const std::vector<cv::Rect2f>& exceptArea = std::vector<cv::Rect2f>());
 
     // plane detect and indicator
     bool detect(int iterations = 500, float threshold = 0.01);
@@ -60,6 +60,7 @@ public:
 
     // debug and release
     void setDebug(bool);
+    bool debug();
     void release();
 
     // get visual center points in the world coordinate
