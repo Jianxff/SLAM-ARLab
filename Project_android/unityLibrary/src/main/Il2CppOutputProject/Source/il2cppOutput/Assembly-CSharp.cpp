@@ -1529,8 +1529,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Marshal_Copy_mF7402FFDB520EA1B8D1C32B368
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GCHandle_op_Inequality_m393093145A7BD94D28974D315020F726C0910985 (GCHandle_tC44F6F72EE68BD4CFABA24309DA7A179D41127DC ___0_a, GCHandle_tC44F6F72EE68BD4CFABA24309DA7A179D41127DC ___1_b, const RuntimeMethod* method) ;
 // System.Void System.Runtime.InteropServices.GCHandle::Free()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GCHandle_Free_m1320A260E487EB1EA6D95F9E54BFFCB5A4EF83A3 (GCHandle_tC44F6F72EE68BD4CFABA24309DA7A179D41127DC* __this, const RuntimeMethod* method) ;
-// System.Boolean Visual::init(System.Int32,System.Int32)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Visual_init_m7A792947D7E74F3980129C4CB656E594CA5BE962 (int32_t ___0_width, int32_t ___1_height, const RuntimeMethod* method) ;
+// System.Boolean Visual::slam_init(System.Int32,System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Visual_slam_init_mC02F28297F3A62DFA86C39F559EB782613516BDE (int32_t ___0_width, int32_t ___1_height, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Texture2D::.ctor(System.Int32,System.Int32,UnityEngine.TextureFormat,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Texture2D__ctor_mECF60A9EC0638EC353C02C8E99B6B465D23BE917 (Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* __this, int32_t ___0_width, int32_t ___1_height, int32_t ___2_textureFormat, bool ___3_mipChain, const RuntimeMethod* method) ;
 // UnityEngine.Camera UnityEngine.Camera::get_main()
@@ -1549,8 +1549,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Color32U5BU5D_t38116C3E91765C4C5726CE12C77FAD
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_Color32ToByte_m7DF7EE5538AE77644C106BF33937994F0BB810EB (Visual_t6C0551F9F8B17E03EF2490BA3803185378104868* __this, Color32U5BU5D_t38116C3E91765C4C5726CE12C77FAD7F9F737259* ___0_color, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___1_image, const RuntimeMethod* method) ;
 // System.Void Visual::transpose(System.Byte[],System.Int32,System.Int32,System.Int32,System.Byte[])
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_transpose_m50C506B22C1C28D452E1075812D7882C768B8AEC (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___0_img, int32_t ___1_channel, int32_t ___2_w, int32_t ___3_h, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___4_dst, const RuntimeMethod* method) ;
-// System.Int32 Visual::process(System.Byte[],System.Byte[],System.Single[],System.Single[])
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Visual_process_mA7E144FEF29DE2B75A59AAADEF46BFDBF83CFF97 (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___0_img, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___1_dst, SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___2_R, SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___3_T, const RuntimeMethod* method) ;
+// System.Int32 Visual::slam_process(System.Byte[],System.Byte[],System.Single[],System.Single[])
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Visual_slam_process_m89FB55BDE219C9012192383DA05F4C714B4B15C7 (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___0_img, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___1_dst, SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___2_R, SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___3_T, const RuntimeMethod* method) ;
 // System.Void Visual::flip(System.Byte[],System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_flip_m58633A962DEF7680916D132D445E6398AD4BC6A4 (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___0_img, int32_t ___1_channel, int32_t ___2_w, int32_t ___3_h, int32_t ___4_fcode, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___5_dst, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Texture2D::LoadRawTextureData(System.Byte[])
@@ -1567,8 +1567,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Transform_set_position_mA1A817124BB41B68
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_LookRotation_mDB2CCA75B8E1AB98104F2A6E1A1EA57D0D1298D7 (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_forward, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Transform::set_rotation(UnityEngine.Quaternion)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Transform_set_rotation_m61340DE74726CF0F9946743A727C4D444397331D (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___0_value, const RuntimeMethod* method) ;
-// System.Boolean Visual::detect(System.Single[],System.Single[])
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Visual_detect_mFD06200FA2963F3A80C9F37400422B255DA73B46 (SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___0_normal, SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___1_center, const RuntimeMethod* method) ;
+// System.Boolean Visual::slam_detect(System.Single[],System.Single[])
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Visual_slam_detect_mB098B45FD94341588768E663A0BB80DFCBC1C951 (SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___0_normal, SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___1_center, const RuntimeMethod* method) ;
 // UnityEngine.Quaternion UnityEngine.Quaternion::FromToRotation(UnityEngine.Vector3,UnityEngine.Vector3)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_FromToRotation_mCB3100F93637E72455388B901C36EF8A25DFDB9A (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_fromDirection, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_toDirection, const RuntimeMethod* method) ;
 // UnityEngine.Vector3 UnityEngine.Quaternion::get_eulerAngles()
@@ -1629,10 +1629,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GUIStyleState_set_textColor_m5868D12858E
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rect__ctor_m18C3033D135097BEE424AAA68D91C706D2647F23 (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D* __this, float ___0_x, float ___1_y, float ___2_width, float ___3_height, const RuntimeMethod* method) ;
 // System.Boolean UnityEngine.GUI::Button(UnityEngine.Rect,System.String,UnityEngine.GUIStyle)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GUI_Button_m62135816B7F4BB45759E10E953926E4E0F24D370 (Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___0_position, String_t* ___1_text, GUIStyle_t20BA2F9F3FE9D13AAA607EEEBE5547835A6F6580* ___2_style, const RuntimeMethod* method) ;
-// System.Void Visual::set_debug(System.Boolean)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_set_debug_m2A3E0E9621EC84CC10FEFE818311CDA7E4CA3CA2 (bool ___0_debug, const RuntimeMethod* method) ;
-// System.Void Visual::draw_tetra(System.Single)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_draw_tetra_mB47AFBEE5DF23EE7C71FE721294F0261244F6696 (float ___0_scale, const RuntimeMethod* method) ;
+// System.Void Visual::slam_set_debug(System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_slam_set_debug_mBBA792625EA5403DAB22A9CE0BFDBEDC376A9A7D (bool ___0_debug, const RuntimeMethod* method) ;
+// System.Void Visual::slam_draw_tetra(System.Single)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_slam_draw_tetra_mC924E786614B961BF52048830035381A89C4BF26 (float ___0_scale, const RuntimeMethod* method) ;
 // System.Void Visual::ChangeScale(System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_ChangeScale_m8BB96F248A3E0DFF625BEC47B5E94189571BDCCB (Visual_t6C0551F9F8B17E03EF2490BA3803185378104868* __this, bool ___0_up, const RuntimeMethod* method) ;
 // System.Void System.Random::.ctor()
@@ -1652,22 +1652,22 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 // UnityEngine.Vector3 UnityEngine.Vector3::get_zero()
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline (const RuntimeMethod* method) ;
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_liblocator_INTERNAL
-IL2CPP_EXTERN_C int32_t DEFAULT_CALL init(int32_t, int32_t);
+IL2CPP_EXTERN_C int32_t DEFAULT_CALL slam_init(int32_t, int32_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_liblocator_INTERNAL
-IL2CPP_EXTERN_C void DEFAULT_CALL set_debug(int32_t);
+IL2CPP_EXTERN_C void DEFAULT_CALL slam_set_debug(int32_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_liblocator_INTERNAL
-IL2CPP_EXTERN_C int32_t DEFAULT_CALL process(uint8_t*, uint8_t*, float*, float*);
+IL2CPP_EXTERN_C int32_t DEFAULT_CALL slam_process(uint8_t*, uint8_t*, float*, float*);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_liblocator_INTERNAL
-IL2CPP_EXTERN_C int32_t DEFAULT_CALL detect(float*, float*);
+IL2CPP_EXTERN_C int32_t DEFAULT_CALL slam_detect(float*, float*);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_liblocator_INTERNAL
-IL2CPP_EXTERN_C void DEFAULT_CALL release();
+IL2CPP_EXTERN_C void DEFAULT_CALL slam_release();
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_liblocator_INTERNAL
-IL2CPP_EXTERN_C void DEFAULT_CALL draw_tetra(float);
+IL2CPP_EXTERN_C void DEFAULT_CALL slam_draw_tetra(float);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_libcvTools_INTERNAL
 IL2CPP_EXTERN_C void DEFAULT_CALL rotate(uint8_t*, int32_t, int32_t, int32_t, int32_t, uint8_t*);
@@ -2859,8 +2859,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Demo__ctor_mF8CB4DA056D99F53BB80CCCC92E9
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// System.Boolean Visual::init(System.Int32,System.Int32)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Visual_init_m7A792947D7E74F3980129C4CB656E594CA5BE962 (int32_t ___0_width, int32_t ___1_height, const RuntimeMethod* method) 
+// System.Boolean Visual::slam_init(System.Int32,System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Visual_slam_init_mC02F28297F3A62DFA86C39F559EB782613516BDE (int32_t ___0_width, int32_t ___1_height, const RuntimeMethod* method) 
 {
 	typedef int32_t (DEFAULT_CALL *PInvokeFunc) (int32_t, int32_t);
 	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_liblocator_INTERNAL
@@ -2868,22 +2868,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Visual_init_m7A792947D7E74F3980129C4CB65
 	if (il2cppPInvokeFunc == NULL)
 	{
 		int parameterSize = sizeof(int32_t) + sizeof(int32_t);
-		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("liblocator.so"), "init", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("liblocator.so"), "slam_init", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
 		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
 	}
 	#endif
 
 	// Native function invocation
 	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_liblocator_INTERNAL
-	int32_t returnValue = reinterpret_cast<PInvokeFunc>(init)(___0_width, ___1_height);
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(slam_init)(___0_width, ___1_height);
 	#else
 	int32_t returnValue = il2cppPInvokeFunc(___0_width, ___1_height);
 	#endif
 
 	return static_cast<bool>(returnValue);
 }
-// System.Void Visual::set_debug(System.Boolean)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_set_debug_m2A3E0E9621EC84CC10FEFE818311CDA7E4CA3CA2 (bool ___0_debug, const RuntimeMethod* method) 
+// System.Void Visual::slam_set_debug(System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_slam_set_debug_mBBA792625EA5403DAB22A9CE0BFDBEDC376A9A7D (bool ___0_debug, const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) (int32_t);
 	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_liblocator_INTERNAL
@@ -2891,21 +2891,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_set_debug_m2A3E0E9621EC84CC10FEFE
 	if (il2cppPInvokeFunc == NULL)
 	{
 		int parameterSize = 4;
-		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("liblocator.so"), "set_debug", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("liblocator.so"), "slam_set_debug", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
 		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
 	}
 	#endif
 
 	// Native function invocation
 	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_liblocator_INTERNAL
-	reinterpret_cast<PInvokeFunc>(set_debug)(static_cast<int32_t>(___0_debug));
+	reinterpret_cast<PInvokeFunc>(slam_set_debug)(static_cast<int32_t>(___0_debug));
 	#else
 	il2cppPInvokeFunc(static_cast<int32_t>(___0_debug));
 	#endif
 
 }
-// System.Int32 Visual::process(System.Byte[],System.Byte[],System.Single[],System.Single[])
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Visual_process_mA7E144FEF29DE2B75A59AAADEF46BFDBF83CFF97 (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___0_img, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___1_dst, SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___2_R, SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___3_T, const RuntimeMethod* method) 
+// System.Int32 Visual::slam_process(System.Byte[],System.Byte[],System.Single[],System.Single[])
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Visual_slam_process_m89FB55BDE219C9012192383DA05F4C714B4B15C7 (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___0_img, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___1_dst, SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___2_R, SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___3_T, const RuntimeMethod* method) 
 {
 	typedef int32_t (DEFAULT_CALL *PInvokeFunc) (uint8_t*, uint8_t*, float*, float*);
 	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_liblocator_INTERNAL
@@ -2913,7 +2913,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Visual_process_mA7E144FEF29DE2B75A59A
 	if (il2cppPInvokeFunc == NULL)
 	{
 		int parameterSize = sizeof(void*) + sizeof(void*) + sizeof(void*) + sizeof(void*);
-		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("liblocator.so"), "process", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("liblocator.so"), "slam_process", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
 		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
 	}
 	#endif
@@ -2948,15 +2948,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Visual_process_mA7E144FEF29DE2B75A59A
 
 	// Native function invocation
 	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_liblocator_INTERNAL
-	int32_t returnValue = reinterpret_cast<PInvokeFunc>(process)(____0_img_marshaled, ____1_dst_marshaled, ____2_R_marshaled, ____3_T_marshaled);
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(slam_process)(____0_img_marshaled, ____1_dst_marshaled, ____2_R_marshaled, ____3_T_marshaled);
 	#else
 	int32_t returnValue = il2cppPInvokeFunc(____0_img_marshaled, ____1_dst_marshaled, ____2_R_marshaled, ____3_T_marshaled);
 	#endif
 
 	return returnValue;
 }
-// System.Boolean Visual::detect(System.Single[],System.Single[])
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Visual_detect_mFD06200FA2963F3A80C9F37400422B255DA73B46 (SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___0_normal, SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___1_center, const RuntimeMethod* method) 
+// System.Boolean Visual::slam_detect(System.Single[],System.Single[])
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Visual_slam_detect_mB098B45FD94341588768E663A0BB80DFCBC1C951 (SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___0_normal, SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* ___1_center, const RuntimeMethod* method) 
 {
 	typedef int32_t (DEFAULT_CALL *PInvokeFunc) (float*, float*);
 	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_liblocator_INTERNAL
@@ -2964,7 +2964,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Visual_detect_mFD06200FA2963F3A80C9F3740
 	if (il2cppPInvokeFunc == NULL)
 	{
 		int parameterSize = sizeof(void*) + sizeof(void*);
-		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("liblocator.so"), "detect", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("liblocator.so"), "slam_detect", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
 		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
 	}
 	#endif
@@ -2985,15 +2985,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Visual_detect_mFD06200FA2963F3A80C9F3740
 
 	// Native function invocation
 	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_liblocator_INTERNAL
-	int32_t returnValue = reinterpret_cast<PInvokeFunc>(detect)(____0_normal_marshaled, ____1_center_marshaled);
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(slam_detect)(____0_normal_marshaled, ____1_center_marshaled);
 	#else
 	int32_t returnValue = il2cppPInvokeFunc(____0_normal_marshaled, ____1_center_marshaled);
 	#endif
 
 	return static_cast<bool>(returnValue);
 }
-// System.Void Visual::release()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_release_mBEC38BF27340CCDEE590D864D7BC9548291446B8 (const RuntimeMethod* method) 
+// System.Void Visual::slam_release()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_slam_release_m1F3F8F83BB77718E1896D877448540BCB929F2A1 (const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) ();
 	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_liblocator_INTERNAL
@@ -3001,21 +3001,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_release_mBEC38BF27340CCDEE590D864
 	if (il2cppPInvokeFunc == NULL)
 	{
 		int parameterSize = 0;
-		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("liblocator.so"), "release", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("liblocator.so"), "slam_release", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
 		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
 	}
 	#endif
 
 	// Native function invocation
 	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_liblocator_INTERNAL
-	reinterpret_cast<PInvokeFunc>(release)();
+	reinterpret_cast<PInvokeFunc>(slam_release)();
 	#else
 	il2cppPInvokeFunc();
 	#endif
 
 }
-// System.Void Visual::draw_tetra(System.Single)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_draw_tetra_mB47AFBEE5DF23EE7C71FE721294F0261244F6696 (float ___0_scale, const RuntimeMethod* method) 
+// System.Void Visual::slam_draw_tetra(System.Single)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_slam_draw_tetra_mC924E786614B961BF52048830035381A89C4BF26 (float ___0_scale, const RuntimeMethod* method) 
 {
 	typedef void (DEFAULT_CALL *PInvokeFunc) (float);
 	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_liblocator_INTERNAL
@@ -3023,14 +3023,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_draw_tetra_mB47AFBEE5DF23EE7C71FE
 	if (il2cppPInvokeFunc == NULL)
 	{
 		int parameterSize = sizeof(float);
-		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("liblocator.so"), "draw_tetra", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("liblocator.so"), "slam_draw_tetra", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
 		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
 	}
 	#endif
 
 	// Native function invocation
 	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_liblocator_INTERNAL
-	reinterpret_cast<PInvokeFunc>(draw_tetra)(___0_scale);
+	reinterpret_cast<PInvokeFunc>(slam_draw_tetra)(___0_scale);
 	#else
 	il2cppPInvokeFunc(___0_scale);
 	#endif
@@ -3211,11 +3211,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_Start_m6BF5F9F9B9878A2B4A011024E9
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		// init(width,height);
+		// slam_init(width,height);
 		int32_t L_0 = __this->___width_4;
 		int32_t L_1 = __this->___height_5;
 		bool L_2;
-		L_2 = Visual_init_m7A792947D7E74F3980129C4CB656E594CA5BE962(L_0, L_1, NULL);
+		L_2 = Visual_slam_init_mC02F28297F3A62DFA86C39F559EB782613516BDE(L_0, L_1, NULL);
 		// rawColorData = new Color32[width*height];
 		int32_t L_3 = __this->___width_4;
 		int32_t L_4 = __this->___height_5;
@@ -3304,13 +3304,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_Update_m68938F8F9C782126DEEEB83E1
 		int32_t L_6 = __this->___width_4;
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_7 = __this->___rawImageData_7;
 		Visual_transpose_m50C506B22C1C28D452E1075812D7882C768B8AEC(L_4, 4, L_5, L_6, L_7, NULL);
-		// int process_res = process(rawImageData,textureData,R,T);
+		// int process_res = slam_process(rawImageData,textureData,R,T);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_8 = __this->___rawImageData_7;
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_9 = __this->___textureData_6;
 		SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* L_10 = __this->___R_9;
 		SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* L_11 = __this->___T_10;
 		int32_t L_12;
-		L_12 = Visual_process_mA7E144FEF29DE2B75A59AAADEF46BFDBF83CFF97(L_8, L_9, L_10, L_11, NULL);
+		L_12 = Visual_slam_process_m89FB55BDE219C9012192383DA05F4C714B4B15C7(L_8, L_9, L_10, L_11, NULL);
 		// flip(textureData,3,width,height,0,textureData);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_13 = __this->___textureData_6;
 		int32_t L_14 = __this->___width_4;
@@ -3378,11 +3378,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_Update_m68938F8F9C782126DEEEB83E1
 
 IL_0127:
 	{
-		// if(detect(normal,center) == true){
+		// if(slam_detect(normal,center) == true){
 		SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* L_31 = __this->___normal_11;
 		SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C* L_32 = __this->___center_12;
 		bool L_33;
-		L_33 = Visual_detect_mFD06200FA2963F3A80C9F37400422B255DA73B46(L_31, L_32, NULL);
+		L_33 = Visual_slam_detect_mB098B45FD94341588768E663A0BB80DFCBC1C951(L_31, L_32, NULL);
 		if (!L_33)
 		{
 			goto IL_01e3;
@@ -3884,9 +3884,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Visual_OnGUI_mCCDC9ECF1068E7382A3BD154B7
 		// cxx_debug = !cxx_debug;
 		bool L_9 = __this->___cxx_debug_21;
 		__this->___cxx_debug_21 = (bool)((((int32_t)L_9) == ((int32_t)0))? 1 : 0);
-		// set_debug(cxx_debug);
+		// slam_set_debug(cxx_debug);
 		bool L_10 = __this->___cxx_debug_21;
-		Visual_set_debug_m2A3E0E9621EC84CC10FEFE818311CDA7E4CA3CA2(L_10, NULL);
+		Visual_slam_set_debug_mBBA792625EA5403DAB22A9CE0BFDBEDC376A9A7D(L_10, NULL);
 	}
 
 IL_0065:
@@ -3905,8 +3905,8 @@ IL_0065:
 		}
 	}
 	{
-		// draw_tetra((float)0.4);
-		Visual_draw_tetra_mB47AFBEE5DF23EE7C71FE721294F0261244F6696((0.400000006f), NULL);
+		// slam_draw_tetra((float)0.4);
+		Visual_slam_draw_tetra_mC924E786614B961BF52048830035381A89C4BF26((0.400000006f), NULL);
 	}
 
 IL_0095:

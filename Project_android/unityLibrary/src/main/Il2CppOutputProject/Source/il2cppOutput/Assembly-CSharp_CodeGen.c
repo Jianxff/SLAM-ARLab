@@ -38,18 +38,18 @@ extern void Demo_ChangeShapekey_mAE9F771DA056F1CEB2364946EC4824CA2F7178FC (void)
 extern void Demo_GoToWebsite_mB162C8246C32CB9E49F9162D0ED5E57CD08F6117 (void);
 // 0x0000000D System.Void Demo::.ctor()
 extern void Demo__ctor_mF8CB4DA056D99F53BB80CCCC92E971E42C7D1346 (void);
-// 0x0000000E System.Boolean Visual::init(System.Int32,System.Int32)
-extern void Visual_init_m7A792947D7E74F3980129C4CB656E594CA5BE962 (void);
-// 0x0000000F System.Void Visual::set_debug(System.Boolean)
-extern void Visual_set_debug_m2A3E0E9621EC84CC10FEFE818311CDA7E4CA3CA2 (void);
-// 0x00000010 System.Int32 Visual::process(System.Byte[],System.Byte[],System.Single[],System.Single[])
-extern void Visual_process_mA7E144FEF29DE2B75A59AAADEF46BFDBF83CFF97 (void);
-// 0x00000011 System.Boolean Visual::detect(System.Single[],System.Single[])
-extern void Visual_detect_mFD06200FA2963F3A80C9F37400422B255DA73B46 (void);
-// 0x00000012 System.Void Visual::release()
-extern void Visual_release_mBEC38BF27340CCDEE590D864D7BC9548291446B8 (void);
-// 0x00000013 System.Void Visual::draw_tetra(System.Single)
-extern void Visual_draw_tetra_mB47AFBEE5DF23EE7C71FE721294F0261244F6696 (void);
+// 0x0000000E System.Boolean Visual::slam_init(System.Int32,System.Int32)
+extern void Visual_slam_init_mC02F28297F3A62DFA86C39F559EB782613516BDE (void);
+// 0x0000000F System.Void Visual::slam_set_debug(System.Boolean)
+extern void Visual_slam_set_debug_mBBA792625EA5403DAB22A9CE0BFDBEDC376A9A7D (void);
+// 0x00000010 System.Int32 Visual::slam_process(System.Byte[],System.Byte[],System.Single[],System.Single[])
+extern void Visual_slam_process_m89FB55BDE219C9012192383DA05F4C714B4B15C7 (void);
+// 0x00000011 System.Boolean Visual::slam_detect(System.Single[],System.Single[])
+extern void Visual_slam_detect_mB098B45FD94341588768E663A0BB80DFCBC1C951 (void);
+// 0x00000012 System.Void Visual::slam_release()
+extern void Visual_slam_release_m1F3F8F83BB77718E1896D877448540BCB929F2A1 (void);
+// 0x00000013 System.Void Visual::slam_draw_tetra(System.Single)
+extern void Visual_slam_draw_tetra_mC924E786614B961BF52048830035381A89C4BF26 (void);
 // 0x00000014 System.Void Visual::rotate(System.Byte[],System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
 extern void Visual_rotate_m377F7CAE999776564F2A5F42CDC7B2C74024924E (void);
 // 0x00000015 System.Void Visual::flip(System.Byte[],System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
@@ -87,12 +87,12 @@ static Il2CppMethodPointer s_methodPointers[30] =
 	Demo_ChangeShapekey_mAE9F771DA056F1CEB2364946EC4824CA2F7178FC,
 	Demo_GoToWebsite_mB162C8246C32CB9E49F9162D0ED5E57CD08F6117,
 	Demo__ctor_mF8CB4DA056D99F53BB80CCCC92E971E42C7D1346,
-	Visual_init_m7A792947D7E74F3980129C4CB656E594CA5BE962,
-	Visual_set_debug_m2A3E0E9621EC84CC10FEFE818311CDA7E4CA3CA2,
-	Visual_process_mA7E144FEF29DE2B75A59AAADEF46BFDBF83CFF97,
-	Visual_detect_mFD06200FA2963F3A80C9F37400422B255DA73B46,
-	Visual_release_mBEC38BF27340CCDEE590D864D7BC9548291446B8,
-	Visual_draw_tetra_mB47AFBEE5DF23EE7C71FE721294F0261244F6696,
+	Visual_slam_init_mC02F28297F3A62DFA86C39F559EB782613516BDE,
+	Visual_slam_set_debug_mBBA792625EA5403DAB22A9CE0BFDBEDC376A9A7D,
+	Visual_slam_process_m89FB55BDE219C9012192383DA05F4C714B4B15C7,
+	Visual_slam_detect_mB098B45FD94341588768E663A0BB80DFCBC1C951,
+	Visual_slam_release_m1F3F8F83BB77718E1896D877448540BCB929F2A1,
+	Visual_slam_draw_tetra_mC924E786614B961BF52048830035381A89C4BF26,
 	Visual_rotate_m377F7CAE999776564F2A5F42CDC7B2C74024924E,
 	Visual_flip_m58633A962DEF7680916D132D445E6398AD4BC6A4,
 	Visual_transpose_m50C506B22C1C28D452E1075812D7882C768B8AEC,
