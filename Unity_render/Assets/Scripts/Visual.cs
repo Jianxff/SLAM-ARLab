@@ -45,17 +45,17 @@ public class Visual : MonoBehaviour{
     
     // dll import
     [DllImport("liblocator.so")]
-    private static extern bool init(int width, int height);
+    private static extern bool slam_init(int width, int height);
     [DllImport("liblocator.so")]
-    private static extern void set_debug(bool debug);
+    private static extern void slam_set_debug(bool debug);
     [DllImport("liblocator.so")]
-    private static extern int process(byte[] img,byte[] dst, float[] R, float[] T);
+    private static extern int slam_process(byte[] img,byte[] dst, float[] R, float[] T);
     [DllImport("liblocator.so")]
-    private static extern bool detect(float[] normal, float[] center);
+    private static extern bool slam_detect(float[] normal, float[] center);
     [DllImport("liblocator.so")]
-    private static extern void release();
+    private static extern void slam_release();
     [DllImport("liblocator.so")]
-    private static extern void draw_tetra(float scale);
+    private static extern void slam_draw_tetra(float scale);
 
  
     [DllImport("libcvTools.so")]
@@ -100,7 +100,7 @@ public class Visual : MonoBehaviour{
 
     void Start(){
         // init
-        init(width,height);
+        slam_init(width,height);
 
         rawColorData = new Color32[width*height];
         rawImageData = new byte[width*height*4];
@@ -127,9 +127,8 @@ public class Visual : MonoBehaviour{
         rawColorData = webcamTexture.GetPixels32();
         Color32ToByte(rawColorData, rawImageData);
         transpose(rawImageData,4,height,width,rawImageData);
-        // rotate(rawImageData,4,width,height,90,rawImageData);
 
-        int process_res = process(rawImageData,textureData,R,T);
+        int process_res = slam_process(rawImageData,textureData,R,T);
         flip(textureData,3,width,height,0,textureData);
 
         tex.LoadRawTextureData(textureData);
@@ -146,7 +145,7 @@ public class Visual : MonoBehaviour{
             //detected = 20;
             put_model = false;
         }else{
-            if(detect(normal,center) == true){
+            if(slam_detect(normal,center) == true){
                 Vector3 p_normal = new Vector3(normal[0],-normal[1],normal[2]);
                 Vector3 p_center = new Vector3(center[0],-center[1],center[2]);
                 indicator.transform.position = p_center;
@@ -171,39 +170,6 @@ public class Visual : MonoBehaviour{
         Camera.main.transform.position = new Vector3(T[0], -T[1], T[2]);
         Camera.main.transform.rotation = Quaternion.LookRotation(new Vector3(R[2], -R[5], R[8]), - new Vector3(R[1], -R[4], R[7]));
 
-        
-        // if(redetect == true){
-        //     Debug.Log("re-detecting...");
-        //     detected = 20;
-        //     redetect = false;
-        // }
-
-        // if(detected == 0){
-        //     Debug.Log("detected!");
-        //     // normal[1] = - normal[1];
-        //     // if(normal[1] < 0){
-        //     //     normal[1] = -normal[1];
-        //     //     normal[0] = -normal[0];
-        //     //     normal[2] = -normal[2];
-        //     // }
-        //     Vector3 p_normal = new Vector3(normal[0],normal[1],normal[2]);
-
-        //     //test_plane.transform.position = new Vector3(center[0],-center[1],center[2]);
-        //     //test_plane.transform.eulerAngles = Quaternion.FromToRotation(new Vector3(0,1,0), p_normal).eulerAngles;
-        //     presetModel.transform.position = new Vector3(center[0],-center[1],center[2]);
-
-        //     // look to camera
-        //     Vector3 cam_model_vec = Camera.main.transform.position - presetModel.transform.position;
-        //     float dist = Vector3.Cross(cam_model_vec,p_normal).magnitude / p_normal.magnitude;
-        //     float t = (float) Math.Sqrt(cam_model_vec.magnitude * cam_model_vec.magnitude - dist * dist);
-        //     Vector3 p_normal_ext = p_normal.normalized * t;
-        //     Vector3 look = cam_model_vec - p_normal_ext;
-        //     presetModel.transform.rotation = Quaternion.LookRotation(look, p_normal);
-
-        //     presetModel.SetActive(true);
-        //     //test_plane.SetActive(true);
-        //     detected = -1;
-        // }
     }
 
     private void SetModel(Vector3 normal, Vector3 center){
@@ -261,10 +227,10 @@ public class Visual : MonoBehaviour{
 
         if(GUI.Button(new Rect(10,10,300,110),"DEBUG",fontStyle)){
             cxx_debug = !cxx_debug;
-            set_debug(cxx_debug);
+            slam_set_debug(cxx_debug);
         }
         if(GUI.Button(new Rect(30,130,300,230),"TETRA",fontStyle)){
-            draw_tetra((float)0.4);
+            slam_draw_tetra((float)0.4);
         }
         if(GUI.Button(new Rect(30,250,300,350),"PUT",fontStyle)){
             // redetect = true;
