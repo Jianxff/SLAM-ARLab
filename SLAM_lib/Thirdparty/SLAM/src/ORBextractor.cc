@@ -59,6 +59,7 @@
 #include <opencv2/features2d/features2d.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <vector>
+#include <iostream>
 
 #include "ORBextractor.h"
 
@@ -1040,8 +1041,9 @@ static void computeDescriptors(const Mat& image, vector<KeyPoint>& keypoints, Ma
         computeOrbDescriptor(keypoints[i], image, &pattern[0], descriptors.ptr((int)i));
 }
 
+
 void ORBextractor::operator()( InputArray _image, InputArray _mask, vector<KeyPoint>& _keypoints,
-                      OutputArray _descriptors)
+                      OutputArray _descriptors, const vector<Rect2f>& _except_area)
 { 
     if(_image.empty())
         return;
@@ -1052,9 +1054,29 @@ void ORBextractor::operator()( InputArray _image, InputArray _mask, vector<KeyPo
     // Pre-compute the scale pyramid
     ComputePyramid(image);
 
-    vector < vector<KeyPoint> > allKeypoints;
-    ComputeKeyPointsOctTree(allKeypoints);
+    vector < vector<KeyPoint> > allKeypointsOrigin;
+    ComputeKeyPointsOctTree(allKeypointsOrigin);
     //ComputeKeyPointsOld(allKeypoints);
+
+/**
+ * *** Change ... delete keypoints in except area
+ */
+    vector<vector<KeyPoint>> allKeypoints(allKeypointsOrigin.size());
+    size_t except_pt = 0;
+    for (int level = 0; level < nlevels; ++level) {
+        float scale = (level == 0 ? 1 : mvScaleFactor[level]);
+        for(auto kp : allKeypointsOrigin[level]) {
+            Point2f pt = kp.pt * scale;
+            if (!InExceptArea(pt, _except_area)) {
+                allKeypoints[level].emplace_back(kp);
+            } else {
+                except_pt++;
+            }
+        }
+    }
+//    Debug ... checking excepted points
+//    cout << "Except Points: " << except_pt << endl;
+
 
     Mat descriptors;
 
@@ -1099,9 +1121,29 @@ void ORBextractor::operator()( InputArray _image, InputArray _mask, vector<KeyPo
                  keypointEnd = keypoints.end(); keypoint != keypointEnd; ++keypoint)
                 keypoint->pt *= scale;
         }
-        // And add the keypoints to the output
+
+//        // And add the keypoints to the output
         _keypoints.insert(_keypoints.end(), keypoints.begin(), keypoints.end());
+          // ** except the points innner exception area,
+//        for(auto& kp : keypoints){
+//            if(InExceptArea(kp.pt, _except_area)){
+//                //_keypoints.push_back(kp);
+//                kp.pt = cv::Point2f(-1,-1);
+//                kp.angle = -1;
+//            }
+//        }
+
     }
+}
+
+bool ORBextractor::InExceptArea(cv::Point2f& pt, const std::vector<cv::Rect2f> &except_area) {
+    for (int i = 0; i < except_area.size(); i++) {
+        if (pt.x >= except_area[i].x && pt.x <= except_area[i].x + except_area[i].width &&
+            pt.y >= except_area[i].y && pt.y <= except_area[i].y + except_area[i].height) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void ORBextractor::ComputePyramid(cv::Mat image)

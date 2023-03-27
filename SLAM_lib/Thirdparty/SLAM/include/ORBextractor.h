@@ -56,9 +56,12 @@ public:
     // Compute the ORB features and descriptors on an image.
     // ORB are dispersed on the image using an octree.
     // Mask is ignored in the current implementation.
+    // ** Add excpetion points detected by yolov5
     void operator()( cv::InputArray image, cv::InputArray mask,
       std::vector<cv::KeyPoint>& keypoints,
-      cv::OutputArray descriptors);
+      cv::OutputArray descriptors,
+      const std::vector<cv::Rect2f>& exceptArea);
+
 
     int inline GetLevels(){
         return nlevels;}
@@ -85,6 +88,7 @@ public:
     std::vector<cv::Mat> mvImagePyramid;
 
 protected:
+    static bool InExceptArea(cv::Point2f& pt, const std::vector<cv::Rect2f>& exceptPoints);
 
     void ComputePyramid(cv::Mat image);
     void ComputeKeyPointsOctTree(std::vector<std::vector<cv::KeyPoint> >& allKeypoints);    
