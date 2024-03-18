@@ -66,7 +66,7 @@
 - [x] **EXPORT** and build application for `Android` devices
 
 ## Contact
-To contact with the author, please send email to `halc@bupt.edu.cn`
+To contact with the author, please send email to `jianxf@bupt.edu.cn`
 
 <br>
 
